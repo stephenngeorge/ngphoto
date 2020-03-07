@@ -1,8 +1,23 @@
+import dotenv from 'dotenv'
 import React from 'react'
 import { render } from 'react-dom'
 import './index.scss'
 import App from './App'
 import * as serviceWorker from './serviceWorker'
+import firebase from 'firebase/app'
+
+dotenv.config()
+// firebase setup
+const config = {
+  apiKey: process.env.APIKEY,
+  authDomain: "ng-photography.firebaseapp.com",
+  databaseURL: "https://ng-photography.firebaseio.com",
+  projectId: "ng-photography",
+  storageBucket: "ng-photography.appspot.com",
+  messagingSenderId: "998704146197"
+}
+firebase.initializeApp(config)
+
 
 render(<App />, document.getElementById('root'))
 
