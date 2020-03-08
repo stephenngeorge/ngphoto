@@ -24,7 +24,12 @@ firebase.initializeApp(config)
 render(
   <Themer theme={{
     colors: {
-      main: "#6CA4C8"
+      main: "#6CA4C8",
+      secondary: "#B88A9F",
+      secondary_light: "rgba(184, 138, 159, .12)",
+      dark: "#121F1F",
+      grey: "#F9F8F7",
+      light: "#FFFFFF"
     }
   }}>
     <App />

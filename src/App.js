@@ -1,30 +1,19 @@
-import React, { useEffect } from 'react'
-import { BrowserRouter as Router } from 'react-router-dom'
-import firebase from 'firebase/app'
-import 'firebase/database'
+import React from 'react'
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 
 import { Page } from 'loris-ui.portfolio'
 import pageData from './Pages/pageData'
 
-const App = () => {
-  useEffect(() => {
-    const getData = () => {
-      const db = firebase.database()
-      const dbRef = db.ref()
-      dbRef.on('value', snapshot => {
-        if (snapshot !== null) {
-          console.log(snapshot.val())
-        }
-      })
-    }
-    getData()
-  }, [])
+import { HomePage } from './Pages'
 
+const App = () => {
   return (
     <Router>
       <div className="app">
         <Page { ...pageData }>
-
+          <Switch>
+            <Route path="/" component={HomePage} />
+          </Switch>
         </Page>
       </div>
     </Router>
