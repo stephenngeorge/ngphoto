@@ -2,6 +2,8 @@ import React, { useEffect } from 'react'
 import firebase from 'firebase/app'
 import 'firebase/database'
 
+import { Title } from 'loris-ui.portfolio'
+
 const App = () => {
   useEffect(() => {
     const getData = () => {
@@ -18,6 +20,7 @@ const App = () => {
 
   return (
     <div className="app">
+      <Title titleLevel={1} titleText="Heading" />
     </div>
   )
 }

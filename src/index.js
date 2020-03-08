@@ -6,6 +6,8 @@ import App from './App'
 import * as serviceWorker from './serviceWorker'
 import firebase from 'firebase/app'
 
+import { Themer } from 'loris-ui.portfolio'
+
 dotenv.config()
 // firebase setup
 const config = {
@@ -19,7 +21,14 @@ const config = {
 firebase.initializeApp(config)
 
 
-render(<App />, document.getElementById('root'))
+render(
+  <Themer theme={{
+    colors: {
+      main: "#6CA4C8"
+    }
+  }}>
+    <App />
+  </Themer>, document.getElementById('root'))
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
