@@ -1,1 +1,14 @@
 @import '~loris-ui.portfolio/dist/index.scss';
+
+.buy-page--text {
+  .title {
+    width: 100%;
+    @include breakpoint("md") {
+      width: 40%;
+    }
+  }
+}
+
+.card-block {
+  margin-top: -3rem;
+}

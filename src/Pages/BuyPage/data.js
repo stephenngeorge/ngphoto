@@ -1,10 +1,13 @@
+import { NGPHOTO_LOGO_MARK_BW } from '../../assets'
+
 const data = {
   textSection: {
     additionalClasses: [
-      'text-container--very-narrow'
+      'text-container--very-narrow',
+      'buy-page--text'
     ],
-    titleLevel: 2,
-    titleText: "Capturing the changing moods of British wildlife and nature",
+    titleLevel: 1,
+    titleText: "Buy photos",
     underlineColor: "main"
   },
   buttonRow: {
@@ -12,18 +15,18 @@ const data = {
     rowWidth: "very-narrow",
     buttons: [
       {
-        buttonLink: "/buy",
-        buttonLinkVariation: "internal",
-        buttonOutline: false,
-        buttonText: "Buy images"
-      },
-      {
         buttonLink: "/contact",
         buttonLinkVariation: "internal",
-        buttonOutline: true,
+        buttonOutline: false,
         buttonText: "Get in touch"
       }
     ]
+  },
+  cardBlock: {
+    backgroundColor: "grey",
+    loadingImage: NGPHOTO_LOGO_MARK_BW,
+    rowContains: 3,
+    wrapOn: "row"
   }
 }
 

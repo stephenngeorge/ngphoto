@@ -4,7 +4,10 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import { Page } from 'loris-ui.portfolio'
 import pageData from './Pages/pageData'
 
-import { HomePage } from './Pages'
+import {
+  BuyPage,
+  HomePage
+} from './Pages'
 
 const App = () => {
   return (
@@ -12,7 +15,8 @@ const App = () => {
       <div className="app">
         <Page { ...pageData }>
           <Switch>
-            <Route path="/" component={HomePage} />
+            <Route exact path="/" component={HomePage} />
+            <Route path="/buy" component={BuyPage} />
           </Switch>
         </Page>
       </div>
