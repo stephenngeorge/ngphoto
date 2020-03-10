@@ -1,12 +1,34 @@
 @import '~loris-ui.portfolio/dist/index.scss';
 
-.buy-page--text {
+.buy-page--text,
+.contact-page--text {
   .title {
     width: 100%;
     @include breakpoint("md") {
       width: 40%;
     }
   }
+}
+
+.buy-page--card {
+  .heading {
+    font-family: $font-family-serif !important;
+    font-weight: $font-weight-heavy;
+    h4 {
+      font-size: 1.5rem;
+    }
+  }
+
+  .card-details {
+    font-weight: $font-weight-heavy;
+    &:nth-child(1) {
+      margin-bottom: 1rem;
+    }
+  }
+}
+
+.contact-page .text-section {
+  padding-bottom: 1.5rem !important;
 }
 
 .card-block {

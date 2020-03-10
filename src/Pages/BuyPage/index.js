@@ -4,6 +4,7 @@ import 'firebase/database'
 
 import {
   ButtonRow,
+  Card,
   CardBlock,
   RichText,
   TextSection
@@ -44,8 +45,35 @@ const BuyPage = () => {
       <CardBlock { ...data.cardBlock }>
         {
           cardsData.length > 0 &&
-          cardsData.map(card => {
-
+          cardsData.map((card, i) => {
+            console.log(card)
+            const cardData = {
+              additionalClasses: [
+                'buy-page--card',
+                card.printSize === "Greetings Cards" ? "greetings-cards" : ""
+              ],
+              cardHeading: card.printSize === "Greetings Cards" ? "Greetings Cards" : `${card.printSize} print`,
+              cardSubHeading: card.hasOwnProperty("mountSize") ? `${card.mountSize} mount` : null,
+              borderColor: "secondary"
+            }
+            return (
+              <Card key={ i } { ...cardData }>
+                {
+                  card.printSize !== "Greetings Cards" &&
+                  <div>
+                    <p className="card-details">Mounted: £{ card.priceMounted }</p>
+                    <p className="card-details">Framed: £{ card.priceFramed }</p>
+                  </div>
+                }
+                {
+                  card.printSize === "Greetings Cards" &&
+                  <div>
+                    <p className="card-details">{ card.largePack }</p>
+                    <p className="card-details">{ card.smallPack }</p>
+                  </div>
+                }
+              </Card>
+            )
           })
         }
       </CardBlock>

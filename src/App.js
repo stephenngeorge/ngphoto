@@ -6,6 +6,7 @@ import pageData from './Pages/pageData'
 
 import {
   BuyPage,
+  ContactPage,
   HomePage
 } from './Pages'
 
@@ -17,6 +18,7 @@ const App = () => {
           <Switch>
             <Route exact path="/" component={HomePage} />
             <Route path="/buy" component={BuyPage} />
+            <Route path="/contact" component={ContactPage} />
           </Switch>
         </Page>
       </div>
