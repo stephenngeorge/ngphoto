@@ -27,10 +27,47 @@
   }
 }
 
-.contact-page .text-section {
-  padding-bottom: 1.5rem !important;
+.contact-page {
+  .text-section,
+  .icons-list {
+    padding-bottom: 1.5rem !important;
+  }
 }
 
-.card-block {
+.buy-page .card-block {
   margin-top: -3rem;
+}
+
+.event-card {
+  a {
+    margin-top: .5rem;
+    font-family: $font-family-serif;
+    font-size: $font-size-lead;
+    color: $color--main;
+    transition: color .2s ease;
+    &:hover {
+      color: darken($color--main, 10%);
+    }
+  }
+}
+
+.event__date {
+  margin-bottom: 1rem;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  font-weight: $font-weight-heavy;
+  color: $color--secondary;
+}
+.event__time,
+.event__postcode {
+  display: flex;
+  align-items: center;
+  margin-bottom: .5rem;
+  font-weight: $font-weight-heavy;
+  img {
+    width: 1.5rem;
+    height: auto;
+    margin-right: .5rem;
+  }
 }

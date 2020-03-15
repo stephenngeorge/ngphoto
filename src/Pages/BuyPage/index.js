@@ -29,7 +29,7 @@ const BuyPage = () => {
   }, [])
 
   return (
-    <div className="page site-page">
+    <div className="page site-page buy-page">
       <TextSection { ...data.textSection }>
         <RichText>
           <p>
