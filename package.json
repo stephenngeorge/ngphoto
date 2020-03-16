@@ -5,7 +5,7 @@
   "dependencies": {
     "dotenv": "^8.2.0",
     "firebase": "^7.9.3",
-    "loris-ui.portfolio": "^0.3.2",
+    "loris-ui.portfolio": "^0.3.3",
     "loriss": "^3.3.2",
     "node-sass": "^4.13.1",
     "react": "^16.11.0",

@@ -16,15 +16,16 @@ import { NGPHOTO_LOGO_MARK_BW } from '../../assets'
 
 const HomePage = () => {
   const [images, setImages] = useState([])
-  const [staticGalleryData, setStaticGalleryData] = useState({
+  const [staticGalleryImages, setStaticGalleryImages] = useState([])
+  const [staticGallerySideNav, setStaticGallerySideNav] = useState([])
+  const staticGalleryData = {
     titleLevel: 2,
     titleText: "Latest Work",
     underlineColor: "main",
-    images: [],
-    sideNavMenuItems: []
-  })
+    images: []
+  }
+
   useEffect(() => {
-    window.scrollTo(0, 0)
     // get data
     // each image should have imageAlt, imageId,
     // imageSrc and imagePlaceholderSrc (which is the same for every image)
@@ -69,18 +70,15 @@ const HomePage = () => {
               ...image
             })
           })
-          setStaticGalleryData({
-            ...staticGalleryData,
-            images: imagesData,
-            sideNavMenuItems: sideNavData
-          })
+          setStaticGalleryImages(imagesData)
+          setStaticGallerySideNav(sideNavData)
         }
       })
     }
     
     getHomePageImages()
     getStaticGallery()
-  }, [staticGalleryData])
+  }, [])
   return (
     <div className='page home-page'>
       <HeroGallery images={ images } />
@@ -103,7 +101,7 @@ const HomePage = () => {
         </RichText>
       </TextSection>
       <ButtonRow { ...data.buttonRow } />
-      <StaticGallery { ...staticGalleryData } />
+      <StaticGallery { ...staticGalleryData } images={ staticGalleryImages } sideNavMenuItems={ staticGallerySideNav } />
     </div>
   )
 }
