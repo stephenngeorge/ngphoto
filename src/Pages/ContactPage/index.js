@@ -19,6 +19,7 @@ import data from './data'
 const ContactPage = () => {
   const [cardsData, setCardsData] = useState([])
   useEffect(() => {
+    window.scrollTo(0, 0)
     const db = firebase.database()
     const dbRef = db.ref()
     dbRef.on('value', snapshot => {
@@ -68,13 +69,20 @@ const ContactPage = () => {
                   <img src={ CLOCK_ICON } alt="clock icon" />
                   { card.time }
                 </p>
-                <p className="event__postcode">
-                  <img src={ MAPPIN_ICON } alt="map pin icon" />
-                  { card.postCode }
-                </p>
+                {
+                  !!card.postCode &&
+                  <p className="event__postcode">
+                    <img src={ MAPPIN_ICON } alt="map pin icon" />
+                    <a href={`https://www.google.co.uk/maps/search/${card.postCode.trim().replace(/\s/g, "")}`} target="_blank" rel="noopener noreferrer">
+                      { card.postCode }
+                    </a>
+                  </p>
+                }
                 {
                   !!card.url &&
-                  <a href={ card.url }>More details</a>
+                  <a className="more-details" href={ card.url } target="_blank" rel="noopener noreferrer">
+                    More details
+                  </a>
                 }
               </Card>
             )

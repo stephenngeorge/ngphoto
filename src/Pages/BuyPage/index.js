@@ -15,6 +15,7 @@ import data from './data'
 const BuyPage = () => {
   const [cardsData, setCardsData] = useState([])
   useEffect(() => {
+    window.scrollTo(0, 0)
     const db = firebase.database()
     const dbRef = db.ref()
     dbRef.on('value', snapshot => {

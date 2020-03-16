@@ -39,7 +39,7 @@
 }
 
 .event-card {
-  a {
+  .more-details {
     margin-top: .5rem;
     font-family: $font-family-serif;
     font-size: $font-size-lead;
@@ -57,7 +57,7 @@
   display: flex;
   justify-content: space-between;
   font-weight: $font-weight-heavy;
-  color: $color--secondary;
+  color: $color--main;
 }
 .event__time,
 .event__postcode {
@@ -69,5 +69,12 @@
     width: 1.5rem;
     height: auto;
     margin-right: .5rem;
+  }
+  a {
+    color: $color--secondary;
+    transition: color .2 ease;
+    &:hover {
+      color: darken($color--secondary, 10%);
+    }
   }
 }

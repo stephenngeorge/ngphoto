@@ -24,6 +24,7 @@ const HomePage = () => {
     sideNavMenuItems: []
   })
   useEffect(() => {
+    window.scrollTo(0, 0)
     // get data
     // each image should have imageAlt, imageId,
     // imageSrc and imagePlaceholderSrc (which is the same for every image)
