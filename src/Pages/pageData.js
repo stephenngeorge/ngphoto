@@ -17,7 +17,7 @@ const pageData = {
     ] 
   },
   menuLinks: [
-    { path: "/galleries", label: "galleries" },
+    { path: "/galleries/new-work", label: "galleries" },
     { path: "/buy", label: "buy" },
     { path: "/contact", label: "contact" }
   ],
