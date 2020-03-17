@@ -31,12 +31,14 @@ const HomePage = () => {
     // imageSrc and imagePlaceholderSrc (which is the same for every image)
     const db = firebase.database()
     const dbRef = db.ref()
-    
+    // fetches images for the hero gallery component
     const getHomePageImages = () => {
       const homepageImages = []
       dbRef.on('value', snapshot => {
         if (snapshot !== null) {
           const imageData = snapshot.val().Photos.Home_Page.images
+          // pass all values of image along with the additional
+          // image placeholder property
           Object.entries(imageData).forEach(([key, image]) => {
             homepageImages.push({
               imagePlaceholderSrc: NGPHOTO_LOGO_MARK_BW,
@@ -47,23 +49,34 @@ const HomePage = () => {
         }
       })
     }
-
+    // fetches images and sidenav data for the
+    // static gallery component
     const getStaticGallery = () => {
       dbRef.on('value', snapshot => {
         if (snapshot !== null) {
-          // get gallery names and set side nav data
+          // get gallery data and construct array of objects
           const galleryNames = snapshot.val().Photos
           const sideNavData = []
-          Object.keys(galleryNames).forEach(gallery => {
-            sideNavData.push({
-              path: `/galleries/${slugify(gallery)}`,
-              label: prettify(gallery).charAt(0).toUpperCase() + prettify(gallery).substring(1)
-            })
+          Object.entries(galleryNames).forEach(([gallery, galleryData]) => {
+            // home page gallery is only for the hero gallery component,
+            // so here we make sure that it isn't pushed into the sidenav data
+            if (gallery !== "Home_Page") {
+              sideNavData.push({
+                path: `/galleries/${slugify(gallery)}`,
+                label: prettify(gallery).charAt(0).toUpperCase() + prettify(gallery).substring(1),
+                // weight is used to order the list of galleries
+                // see `sort` function in `setStaticGallerySideNav` below
+                weight: galleryData.weight
+              })
+            }
           })
 
-          // sort images from new work gallery
+          // fetch images from new work gallery - to be rendered in the
+          // static gallery component
           const staticGalleryImages = snapshot.val().Photos.New_Work.images
           const imagesData = []
+          // pass along all image values with the additional
+          // placeholderImageSrc property
           Object.entries(staticGalleryImages).forEach(([key, image]) => {
             imagesData.push({
               placeholderImageSrc: NGPHOTO_LOGO_MARK_BW,
@@ -71,7 +84,7 @@ const HomePage = () => {
             })
           })
           setStaticGalleryImages(imagesData)
-          setStaticGallerySideNav(sideNavData)
+          setStaticGallerySideNav(sideNavData.sort((a, b) => a.weight - b.weight))
         }
       })
     }
@@ -79,6 +92,7 @@ const HomePage = () => {
     getHomePageImages()
     getStaticGallery()
   }, [])
+
   return (
     <div className='page home-page'>
       <HeroGallery images={ images } />

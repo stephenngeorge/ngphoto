@@ -28,8 +28,7 @@ const ContactPage = () => {
         Object.entries(snapshot.val().Events).forEach(([key, event]) => {
           events.push(event)
         })
-        console.log(events)
-        setCardsData(events)
+        setCardsData(events.sort((a,b) => a.weight - b.weight))
       }
     })
   }, [])

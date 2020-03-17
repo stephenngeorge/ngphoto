@@ -24,7 +24,7 @@ const BuyPage = () => {
         Object.entries(snapshot.val().Products).forEach(([key, product]) => {
           products.push(product)
         })
-        setCardsData(products)
+        setCardsData(products.sort((a, b) => a.weight - b.weight))
       }
     })
   }, [])
