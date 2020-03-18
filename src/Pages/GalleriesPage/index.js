@@ -15,6 +15,7 @@ const GalleriesPage = () => {
 
   useEffect(() => {
     window.scrollTo(0, 0)
+    setGalleryImages([])
     const db = firebase.database()
     const dbRef = db.ref()
     dbRef.on('value', snapshot => {
@@ -43,7 +44,7 @@ const GalleriesPage = () => {
           }
         })
 
-        setGalleryImages(images)
+        setGalleryImages(images.reverse())
         setPageNavData(pageNavLinks.sort((a, b) => a.weight - b.weight))
       }
     })

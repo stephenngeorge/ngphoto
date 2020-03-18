@@ -83,7 +83,7 @@ const HomePage = () => {
               ...image
             })
           })
-          setStaticGalleryImages(imagesData)
+          setStaticGalleryImages(imagesData.reverse())
           setStaticGallerySideNav(sideNavData.sort((a, b) => a.weight - b.weight))
         }
       })
