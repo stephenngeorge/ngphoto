@@ -31,6 +31,8 @@ const ContactPage = () => {
         setCardsData(events.sort((a,b) => a.weight - b.weight))
       }
     })
+
+    return dbRef.off()
   }, [])
 
   return (

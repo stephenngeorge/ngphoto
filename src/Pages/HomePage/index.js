@@ -91,6 +91,8 @@ const HomePage = () => {
     
     getHomePageImages()
     getStaticGallery()
+
+    return () => dbRef.off()
   }, [])
 
   return (

@@ -48,6 +48,8 @@ const GalleriesPage = () => {
         setPageNavData(pageNavLinks.sort((a, b) => a.weight - b.weight))
       }
     })
+
+    return () => dbRef.off()
   }, [galleryName])
 
   return (

@@ -27,6 +27,8 @@ const BuyPage = () => {
         setCardsData(products.sort((a, b) => a.weight - b.weight))
       }
     })
+
+    return () => dbRef.off()
   }, [])
 
   return (
