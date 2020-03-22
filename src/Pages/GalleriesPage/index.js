@@ -38,7 +38,7 @@ const GalleriesPage = () => {
           if (key !== "Home_Page") {
             pageNavLinks.push({
               label: prettify(key).charAt(0).toUpperCase() + prettify(key).substring(1),
-              path: `/galleries/${slugify(key)}`,
+              url: `/galleries/${slugify(key)}`,
               weight: photosData[key].weight
             })
           }
