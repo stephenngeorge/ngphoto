@@ -32,9 +32,10 @@ const ContactPage = () => {
       }
     })
 
-    return dbRef.off()
+    return () => dbRef.off()
   }, [])
 
+  console.log(cardsData)
   return (
     <div className="page site-page contact-page">
       <TextSection { ...data.textSection }>

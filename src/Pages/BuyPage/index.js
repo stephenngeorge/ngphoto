@@ -49,7 +49,6 @@ const BuyPage = () => {
         {
           cardsData.length > 0 &&
           cardsData.map((card, i) => {
-            console.log(card)
             const cardData = {
               additionalClasses: [
                 'buy-page--card',
