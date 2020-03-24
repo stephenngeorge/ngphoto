@@ -6,7 +6,8 @@ import 'firebase/database'
 import { uglify, slugify, prettify } from '../../utils'
 import { NGPHOTO_LOGO_MARK_BW } from '../../assets'
 
-import { GalleryFull, PageNav } from 'loris-ui.portfolio'
+import { ButtonRow, GalleryFull, PageNav } from 'loris-ui.portfolio'
+import data from './data'
 
 const GalleriesPage = () => {
   const { galleryName } = useParams()
@@ -55,7 +56,9 @@ const GalleriesPage = () => {
   return (
     <div className="page site-page galleries-page">
       <PageNav links={ pageNavData } />
-      <GalleryFull images={ galleryImages } />
+      <GalleryFull images={ galleryImages }>
+        <ButtonRow { ...data.buttonRow } />
+      </GalleryFull>
     </div>
   )
 }

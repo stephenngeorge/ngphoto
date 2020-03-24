@@ -20,7 +20,7 @@ const data = {
     icons: [
       { name: 'facebook', size: 'md', src: FACEBOOK_LOGO, url: 'https://www.facebook.com/NeilGeorgePhotography/' },
       { name: 'twitter', size: 'md', src: TWITTER_LOGO, url: 'https://twitter.com/NeilG199' },
-      { name: 'email', size: 'md', src: SENT_MAIL_ICON, url: 'https://google.co.uk' }
+      { name: 'email', size: 'md', src: SENT_MAIL_ICON, url: 'mailto:neil.george@icloud.com' }
     ]
   },
   cardBlock: {
