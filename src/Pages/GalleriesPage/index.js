@@ -55,7 +55,7 @@ const GalleriesPage = () => {
   return (
     <div className="page site-page galleries-page">
       <PageNav links={ pageNavData } />
-      <GalleryFull images={ galleryImages } />
+      <GalleryFull images={ galleryImages } initialImage={ 0 } />
     </div>
   )
 }

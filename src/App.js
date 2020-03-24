@@ -1,5 +1,5 @@
 import React from 'react'
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
+import { BrowserRouter as Router, Redirect, Route, Switch } from 'react-router-dom'
 
 import { Page } from 'loris-ui.portfolio'
 import pageData from './Pages/pageData'
@@ -18,6 +18,9 @@ const App = () => {
         <Page { ...pageData }>
           <Switch>
             <Route exact path="/" component={HomePage} />
+            <Route exact path="/galleries">
+              <Redirect to="/galleries/new-work" />
+            </Route>
             <Route path="/galleries/:galleryName" component={GalleriesPage} />
             <Route path="/buy" component={BuyPage} />
             <Route path="/contact" component={ContactPage} />
