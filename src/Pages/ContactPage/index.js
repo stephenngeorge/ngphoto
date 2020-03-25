@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
-import firebase from 'firebase/app'
-import 'firebase/database'
+import { useFirebaseDb } from '../../utils'
+
 import {
   Card,
   CardBlock,
@@ -18,22 +18,20 @@ import data from './data'
 
 const ContactPage = () => {
   const [cardsData, setCardsData] = useState([])
-  useEffect(() => {
-    window.scrollTo(0, 0)
-    const db = firebase.database()
-    const dbRef = db.ref()
-    dbRef.on('value', snapshot => {
-      const events = []
-      if (snapshot !== null) {
-        Object.entries(snapshot.val().Events).forEach(([key, event]) => {
-          events.push(event)
-        })
-        setCardsData(events.sort((a,b) => a.weight - b.weight))
-      }
-    })
+  const [eventsVal, dbRef] = useFirebaseDb("Events")
 
-    return () => dbRef.off()
-  }, [])
+  useEffect(() => window.scrollTo(0, 0), [])
+  useEffect(() => {
+    const events = []
+    Object.entries(eventsVal).forEach(([key, event]) => {
+      events.push(event)
+    })
+    setCardsData(events.sort((a,b) => a.weight - b.weight))
+
+    return () => {
+      if (dbRef !== null) dbRef.off()
+    }
+  }, [eventsVal, dbRef])
 
   return (
     <div className="page site-page contact-page">

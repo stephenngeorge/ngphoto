@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import firebase from 'firebase/app'
-import 'firebase/database'
+import { useFirebaseDb } from '../../utils'
 
 import {
   ButtonRow,
@@ -14,22 +13,19 @@ import data from './data'
 
 const BuyPage = () => {
   const [cardsData, setCardsData] = useState([])
+  const [productsVal, dbRef] = useFirebaseDb("Products")
+  
+  useEffect(() => window.scrollTo(0, 0), [])
   useEffect(() => {
-    window.scrollTo(0, 0)
-    const db = firebase.database()
-    const dbRef = db.ref()
-    dbRef.on('value', snapshot => {
-      const products = []
-      if (snapshot !== null) {
-        Object.entries(snapshot.val().Products).forEach(([key, product]) => {
-          products.push(product)
-        })
-        setCardsData(products.sort((a, b) => a.weight - b.weight))
-      }
+    const products = []
+    Object.entries(productsVal).forEach(([key, product]) => {
+      products.push(product)
     })
-
-    return () => dbRef.off()
-  }, [])
+    setCardsData(products.sort((a, b) => a.weight - b.weight))
+    return () => {
+      if (dbRef !== null) dbRef.off()
+    }
+  }, [productsVal, dbRef])
 
   return (
     <div className="page site-page buy-page">

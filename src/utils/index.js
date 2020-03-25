@@ -1,3 +1,5 @@
+import useFirebaseDb from './useFirebaseDb'
+
 // remove white space from text and prepare it for further manipulation
 const strip = text => text.trim().toLowerCase()
 // remove underscores and replace with spaces
@@ -10,5 +12,6 @@ const uglify = text => strip(text).replace(/\s/g, "_").replace(/-/g, "_")
 export {
   prettify,
   slugify,
-  uglify
+  uglify,
+  useFirebaseDb
 }

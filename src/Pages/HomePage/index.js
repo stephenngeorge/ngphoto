@@ -26,17 +26,18 @@ const HomePage = () => {
   }
 
   useEffect(() => {
+    window.scrollTo(0, 0)
     // get data
     // each image should have imageAlt, imageId,
     // imageSrc and imagePlaceholderSrc (which is the same for every image)
     const db = firebase.database()
-    const dbRef = db.ref()
+    const dbRef = db.ref("Photos")
     // fetches images for the hero gallery component
     const getHomePageImages = () => {
       const homepageImages = []
       dbRef.on('value', snapshot => {
         if (snapshot !== null) {
-          const imageData = snapshot.val().Photos.Home_Page.images
+          const imageData = snapshot.val().Home_Page.images
           // pass all values of image along with the additional
           // image placeholder property
           Object.entries(imageData).forEach(([key, image]) => {
@@ -55,7 +56,7 @@ const HomePage = () => {
       dbRef.on('value', snapshot => {
         if (snapshot !== null) {
           // get gallery data and construct array of objects
-          const galleryNames = snapshot.val().Photos
+          const galleryNames = snapshot.val()
           const sideNavData = []
           Object.entries(galleryNames).forEach(([gallery, galleryData]) => {
             // home page gallery is only for the hero gallery component,
@@ -73,7 +74,7 @@ const HomePage = () => {
 
           // fetch images from new work gallery - to be rendered in the
           // static gallery component
-          const staticGalleryImages = snapshot.val().Photos.New_Work.images
+          const staticGalleryImages = snapshot.val().New_Work.images
           const imagesData = []
           // pass along all image values with the additional
           // placeholderImageSrc property
