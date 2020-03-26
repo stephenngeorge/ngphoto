@@ -1,3 +1,5 @@
+import "object-fit-polyfill"
+import "intersection-observer"
 import dotenv from 'dotenv'
 import React from 'react'
 import { render } from 'react-dom'
