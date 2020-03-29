@@ -51,7 +51,7 @@ const GalleriesPage = () => {
   return (
     <div className="page site-page galleries-page">
       <PageNav links={ pageNavData } />
-      <GalleryFull images={ galleryImages } galleryName={ prettify(galleryName) }>
+      <GalleryFull images={ galleryImages }>
         <ButtonRow { ...data.buttonRow } />
       </GalleryFull>
     </div>
