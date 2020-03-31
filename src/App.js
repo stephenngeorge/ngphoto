@@ -8,7 +8,8 @@ import {
   BuyPage,
   ContactPage,
   GalleriesPage,
-  HomePage
+  HomePage,
+  Page404
 } from './Pages'
 
 const App = () => {
@@ -24,6 +25,7 @@ const App = () => {
             <Route path="/galleries/:galleryName" component={GalleriesPage} />
             <Route path="/buy" component={BuyPage} />
             <Route path="/contact" component={ContactPage} />
+            <Route component={Page404} />
           </Switch>
         </Page>
       </div>
