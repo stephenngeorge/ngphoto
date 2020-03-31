@@ -11,7 +11,7 @@ const Page404 = () => {
         <p>
           Sorry, we couldn't find anything to show for <span>{ pathname }</span>. This might 
           be our fault...or you may have entered something in the address bar that doesn't exists! 
-          Check for typos or us the navigation.
+          Check for typos or use the navigation.
         </p>
       </div>
     </div>
