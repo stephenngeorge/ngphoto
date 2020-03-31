@@ -5,7 +5,7 @@ import { useFirebaseDb } from '../../utils'
 import { uglify, slugify, prettify } from '../../utils'
 import { NGPHOTO_LOGO_MARK_BW } from '../../assets'
 
-import { ButtonRow, GalleryFull, PageNav } from 'loris-ui.portfolio'
+import { ButtonRow, GalleryFull, PageNav, Title } from 'loris-ui.portfolio'
 import data from './data'
 
 const GalleriesPage = () => {
@@ -51,6 +51,7 @@ const GalleriesPage = () => {
   return (
     <div className="page site-page galleries-page">
       <PageNav links={ pageNavData } />
+      <Title titleText={ prettify(galleryName) } titleLevel={ 1 } underlineColor="secondary" />
       <GalleryFull images={ galleryImages }>
         <ButtonRow { ...data.buttonRow } />
       </GalleryFull>
