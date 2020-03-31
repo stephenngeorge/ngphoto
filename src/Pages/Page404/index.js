@@ -10,7 +10,7 @@ const Page404 = () => {
         <Title titleText="Page not found" titleLevel={ 1 } underlineColor="secondary" />
         <p>
           Sorry, we couldn't find anything to show for <span>{ pathname }</span>. This might 
-          be our fault...or you may have entered something in the address bar that doesn't exists! 
+          be our fault...or you may have entered something in the address bar that doesn't exist! 
           Check for typos or use the navigation.
         </p>
       </div>
