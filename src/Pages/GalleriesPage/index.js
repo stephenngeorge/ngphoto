@@ -10,6 +10,7 @@ import data from './data'
 
 const GalleriesPage = () => {
   const { galleryName } = useParams()
+  const [displayName, setDisplayName] = useState('Galleries')
   const [galleryImages, setGalleryImages] = useState([])
   const [pageNavData, setPageNavData] = useState([])
   const [galleriesVal, dbRef] = useFirebaseDb("Photos")
@@ -21,6 +22,7 @@ const GalleriesPage = () => {
     const pageNavLinks = []
     Object.keys(galleriesVal).forEach(key => {
       if (key.toLowerCase() === uglify(galleryName)) {
+        setDisplayName(galleriesVal[key].galleryName)
         Object.entries(galleriesVal[key].images).forEach(([name, image]) => {
           images.push({
             ...image,
@@ -51,7 +53,7 @@ const GalleriesPage = () => {
   return (
     <div className="page site-page galleries-page">
       <PageNav links={ pageNavData } />
-      <Title titleText={ prettify(galleryName) } titleLevel={ 1 } underlineColor="secondary" />
+      <Title titleText={ prettify(displayName) } titleLevel={ 1 } underlineColor="secondary" />
       <GalleryFull images={ galleryImages }>
         <ButtonRow { ...data.buttonRow } />
       </GalleryFull>
