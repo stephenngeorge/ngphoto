@@ -38,11 +38,15 @@ const ContactPage = () => {
       <TextSection { ...data.textSection }>
         <RichText>
           <p>
-            Contact Neil if you’re interested in <Link to="/buy">buying a photo</Link>, or if you 
-            have any questions about his work. Neil also offers workshops 
-            in Adobe Lightroom so please get in touch if you’d like to find 
-            out more. You can also find Neil at any of the events listed 
-            below, he’d love to see you there.
+            Contact Neil if you are interested in <Link to="/buy">buying a photo</Link>, or if you 
+            have any questions about his work. Neil also offers workshops so please get in touch if 
+            you would like to find out more. Workshops that are available are: <strong>“An Introduction to 
+            Photography and Your Camera”</strong>, <strong>“Post-Processing in Lightroom”</strong> and <strong>“Nature Walks with a 
+            Camera”</strong> (in this final one, Neil will meet with you at an agreed location and walk with 
+            you: this will be a mixture of photography and general nature watching). Workshops are priced 
+            at £30/hour for groups of 3 or fewer and £50/hour for groups of more than 3 (this is the total 
+            cost, not the cost per individual). You can also find Neil at any of the events listed below 
+            (click on the post code to open Google maps and get directions to the location).
           </p>
         </RichText>
       </TextSection>

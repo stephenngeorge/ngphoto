@@ -102,18 +102,23 @@ const HomePage = () => {
       <TextSection { ...data.textSection }>
         <RichText>
           <p>
-            Having taken early retirement in 2017, I now concentrate on photography 
-            (alongside my other main interest: reading) with a particular interest in 
-            UK wildlife and nature. My ambition is always to create pictures with an 
-            element of the “artistic” but captured without any staging. None of my 
-            pictures are set up or taken in a studio: they are all images captured 
-            whilst outside exploring the British countryside. I look for ways to make 
-            these pictures more than simple record shots and ideally I want to create 
-            images that people would be keen to hang on their walls. I use a Canon 7D 
-            MkII with Sigma 150-600mm S, Sigma 70-200mm and Canon 17-55mm lenses. 
-            Images are post-processed in Lightroom. You can also find me on <a href="https://www.facebook.com/NeilGeorgePhotography/">Facebook 
+            Neil has been taking photographs for over 40 years, switching from film to 
+            digital in 2009. In 2017, he took early retirement from a career in the IT 
+            industry in order to focus on his image making. Neil’s photography follows two 
+            distinct paths. Firstly, he has a very keen interest in the natural world and 
+            spends a lot of time outside searching for wildlife or scenery that can be 
+            photographed. In these images, Neil avoids use of Photoshop or other image 
+            alterations: he looks for ways to capture atmosphere and mood rather than simply 
+            recording the scene, but does not set up photographs or use post-processing 
+            software to add or remove things. All image are post-processed in Lightroom, 
+            but this does not make changes to the underlying image in Neil’s nature photography. 
+            Neil’s other passion is for more abstract photography and here he makes use of his 
+            camera’s multiple exposure facility and other creative techniques such as Intentional 
+            Camera Movement (ICM) and he also uses Photoshop to blend images to create the effect 
+            he has envisaged. You can find Neil on <a href="https://www.facebook.com/NeilGeorgePhotography/">Facebook 
             (@NeilGeorgePhotography)</a> and <a href="https://twitter.com/NeilG199">Twitter (@NeilG199)</a>, 
-            although my Twitter feed mixes both photography and book reviews.
+            although the Twitter feed also includes Neil’s other main interest: books. Please browse 
+            through Neil’s image galleries: he hopes you enjoy the pictures.
           </p>
         </RichText>
       </TextSection>

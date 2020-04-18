@@ -32,11 +32,14 @@ const BuyPage = () => {
       <TextSection { ...data.textSection }>
         <RichText>
           <p>
-            If you’d like to buy any of the pictures you’ve seen, then 
-            contact Neil with the name of the picture(s) you’re interested 
-            in and the size(s) you would like them (from the list below). 
-            If you’d like something bespoke/customised, please get in touch 
-            and Neil will be happy to talk things through with you.
+            If you would like to buy any of the pictures you have seen, then please 
+            contact Neil with the names of the picture(s) you are interested in and 
+            the size(s) you would like them (from the list below). Please note that 
+            images with “Limited Edition” in the title are currently only available at the 
+            16x12” mount size shown below: these images are limited to a print run of 50 
+            and will be labelled to identify which print number you receive. If you would 
+            like something bespoke/customised, please get in touch and Neil will be happy 
+            to talk things through with you.
           </p>
         </RichText>
       </TextSection>
