@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import firebase from 'firebase/app'
 import 'firebase/database'
 
-import { prettify, slugify } from '../../utils'
+import { slugify } from '../../utils'
 
 import {
   ButtonRow,
@@ -64,7 +64,7 @@ const HomePage = () => {
             if (gallery !== "Home_Page") {
               sideNavData.push({
                 path: `/galleries/${slugify(gallery)}`,
-                label: prettify(gallery).charAt(0).toUpperCase() + prettify(gallery).substring(1),
+                label: galleryData.galleryName,
                 // weight is used to order the list of galleries
                 // see `sort` function in `setStaticGallerySideNav` below
                 weight: galleryData.weight

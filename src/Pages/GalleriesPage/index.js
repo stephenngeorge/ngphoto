@@ -21,6 +21,13 @@ const GalleriesPage = () => {
     const images = []
     const pageNavLinks = []
     Object.keys(galleriesVal).forEach(key => {
+      if (key !== "Home_Page") {
+        pageNavLinks.push({
+          label: galleriesVal[key].galleryName,
+          url: `/galleries/${slugify(key)}`,
+          weight: galleriesVal[key].weight
+        })
+      }
       if (key.toLowerCase() === uglify(galleryName)) {
         setDisplayName(galleriesVal[key].galleryName)
         Object.entries(galleriesVal[key].images).forEach(([name, image]) => {
@@ -32,15 +39,15 @@ const GalleriesPage = () => {
       }
     })
 
-    Object.keys(galleriesVal).forEach(key => {
-      if (key !== "Home_Page") {
-        pageNavLinks.push({
-          label: prettify(key).charAt(0).toUpperCase() + prettify(key).substring(1),
-          url: `/galleries/${slugify(key)}`,
-          weight: galleriesVal[key].weight
-        })
-      }
-    })
+    // Object.keys(galleriesVal).forEach(key => {
+    //   if (key !== "Home_Page") {
+    //     pageNavLinks.push({
+    //       label: prettify(key).charAt(0).toUpperCase() + prettify(key).substring(1),
+    //       url: `/galleries/${slugify(key)}`,
+    //       weight: galleriesVal[key].weight
+    //     })
+    //   }
+    // })
 
     setGalleryImages(images.reverse())
     setPageNavData(pageNavLinks.sort((a, b) => a.weight - b.weight))
