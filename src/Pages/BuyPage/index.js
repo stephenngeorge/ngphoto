@@ -37,7 +37,7 @@ const BuyPage = () => {
             the size(s) you would like them (from the list below). Please note that 
             images with “Limited Edition” in the title are currently only available at the 
             16x12” mount size shown below: these images are limited to a print run of 50 
-            and will be labelled to identify which print number you receive. If you would 
+            and come with a Certificate of Authenticity. If you would 
             like something bespoke/customised, please get in touch and Neil will be happy 
             to talk things through with you.
           </p>
