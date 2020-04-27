@@ -21,7 +21,7 @@
 
   .card-details {
     font-weight: $font-weight-heavy;
-    &:nth-child(1) {
+    &:not(:nth-last-child(1)) {
       margin-bottom: 1rem;
     }
   }

@@ -27,6 +27,7 @@ const BuyPage = () => {
     }
   }, [productsVal, dbRef])
 
+  console.log(cardsData)
   return (
     <div className="page site-page buy-page">
       <TextSection { ...data.textSection }>
@@ -64,6 +65,10 @@ const BuyPage = () => {
                   <div>
                     <p className="card-details">Mounted: £{ card.priceMounted }</p>
                     <p className="card-details">Framed: £{ card.priceFramed }</p>
+                    {
+                      card.pricePrint &&
+                      <p className="card-details">Print (unmounted): £{ card.pricePrint }</p>
+                    }
                   </div>
                 }
                 {
