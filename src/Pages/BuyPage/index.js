@@ -63,11 +63,11 @@ const BuyPage = () => {
                 {
                   card.printSize !== "Greetings Cards" &&
                   <div>
-                    <p className="card-details">Mounted: £{ card.priceMounted }</p>
-                    <p className="card-details">Framed: £{ card.priceFramed }</p>
+                    <p className="card-details"><span className="color--main">Mounted:</span> £{ card.priceMounted }</p>
+                    <p className="card-details"><span className="color--main">Framed:</span> £{ card.priceFramed }</p>
                     {
                       card.pricePrint &&
-                      <p className="card-details">Print (unmounted): £{ card.pricePrint }</p>
+                      <p className="card-details"><span className="color--main">Print (unmounted):</span> £{ card.pricePrint }</p>
                     }
                   </div>
                 }
