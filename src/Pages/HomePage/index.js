@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import firebase from 'firebase/app'
 import 'firebase/database'
 
-import { prettify, slugify } from '../../utils'
+import { slugify } from '../../utils'
 
 import {
   ButtonRow,
@@ -26,17 +26,20 @@ const HomePage = () => {
   }
 
   useEffect(() => {
+    window.scrollTo(0, 0)
     // get data
     // each image should have imageAlt, imageId,
     // imageSrc and imagePlaceholderSrc (which is the same for every image)
     const db = firebase.database()
-    const dbRef = db.ref()
-    
+    const dbRef = db.ref("Photos")
+    // fetches images for the hero gallery component
     const getHomePageImages = () => {
       const homepageImages = []
       dbRef.on('value', snapshot => {
         if (snapshot !== null) {
-          const imageData = snapshot.val().Photos.Home_Page.images
+          const imageData = snapshot.val().Home_Page.images
+          // pass all values of image along with the additional
+          // image placeholder property
           Object.entries(imageData).forEach(([key, image]) => {
             homepageImages.push({
               imagePlaceholderSrc: NGPHOTO_LOGO_MARK_BW,
@@ -47,56 +50,75 @@ const HomePage = () => {
         }
       })
     }
-
+    // fetches images and sidenav data for the
+    // static gallery component
     const getStaticGallery = () => {
       dbRef.on('value', snapshot => {
         if (snapshot !== null) {
-          // get gallery names and set side nav data
-          const galleryNames = snapshot.val().Photos
+          // get gallery data and construct array of objects
+          const galleryNames = snapshot.val()
           const sideNavData = []
-          Object.keys(galleryNames).forEach(gallery => {
-            sideNavData.push({
-              path: `/galleries/${slugify(gallery)}`,
-              label: prettify(gallery).charAt(0).toUpperCase() + prettify(gallery).substring(1)
-            })
+          Object.entries(galleryNames).forEach(([gallery, galleryData]) => {
+            // home page gallery is only for the hero gallery component,
+            // so here we make sure that it isn't pushed into the sidenav data
+            if (gallery !== "Home_Page") {
+              sideNavData.push({
+                path: `/galleries/${slugify(gallery)}`,
+                label: galleryData.galleryName,
+                // weight is used to order the list of galleries
+                // see `sort` function in `setStaticGallerySideNav` below
+                weight: galleryData.weight
+              })
+            }
           })
 
-          // sort images from new work gallery
-          const staticGalleryImages = snapshot.val().Photos.New_Work.images
+          // fetch images from new work gallery - to be rendered in the
+          // static gallery component
+          const staticGalleryImages = snapshot.val().New_Work.images
           const imagesData = []
+          // pass along all image values with the additional
+          // placeholderImageSrc property
           Object.entries(staticGalleryImages).forEach(([key, image]) => {
             imagesData.push({
               placeholderImageSrc: NGPHOTO_LOGO_MARK_BW,
               ...image
             })
           })
-          setStaticGalleryImages(imagesData)
-          setStaticGallerySideNav(sideNavData)
+          setStaticGalleryImages(imagesData.reverse())
+          setStaticGallerySideNav(sideNavData.sort((a, b) => a.weight - b.weight))
         }
       })
     }
     
     getHomePageImages()
     getStaticGallery()
+
+    return () => dbRef.off()
   }, [])
+
   return (
     <div className='page home-page'>
       <HeroGallery images={ images } />
       <TextSection { ...data.textSection }>
         <RichText>
           <p>
-            Having taken early retirement in 2017, I now concentrate on photography 
-            (alongside my other main interest: reading) with a particular interest in 
-            UK wildlife and nature. My ambition is always to create pictures with an 
-            element of the “artistic” but captured without any staging. None of my 
-            pictures are set up or taken in a studio: they are all images captured 
-            whilst outside exploring the British countryside. I look for ways to make 
-            these pictures more than simple record shots and ideally I want to create 
-            images that people would be keen to hang on their walls. I use a Canon 7D 
-            MkII with Sigma 150-600mm S, Sigma 70-200mm and Canon 17-55mm lenses. 
-            Images are post-processed in Lightroom. You can also find me on <a href="https://www.facebook.com/NeilGeorgePhotography/">Facebook 
+            Neil has been taking photographs for over 40 years, switching from film to 
+            digital in 2009. In 2017, he took early retirement from a career in the IT 
+            industry in order to focus on his image making. Neil’s photography follows two 
+            distinct paths. Firstly, he has a very keen interest in the natural world and 
+            spends a lot of time outside searching for wildlife or scenery that can be 
+            photographed. In these images, Neil avoids use of Photoshop or other image 
+            alterations: he looks for ways to capture atmosphere and mood rather than simply 
+            recording the scene, but does not set up photographs or use post-processing 
+            software to add or remove things. All image are post-processed in Lightroom, 
+            but this does not make changes to the underlying image in Neil’s nature photography. 
+            Neil’s other passion is for more abstract photography and here he makes use of his 
+            camera’s multiple exposure facility and other creative techniques such as Intentional 
+            Camera Movement (ICM) and he also uses Photoshop to blend images to create the effect 
+            he has envisaged. You can find Neil on <a href="https://www.facebook.com/NeilGeorgePhotography/">Facebook 
             (@NeilGeorgePhotography)</a> and <a href="https://twitter.com/NeilG199">Twitter (@NeilG199)</a>, 
-            although my Twitter feed mixes both photography and book reviews.
+            although the Twitter feed also includes Neil’s other main interest: books. Please browse 
+            through Neil’s image galleries: he hopes you enjoy the pictures.
           </p>
         </RichText>
       </TextSection>

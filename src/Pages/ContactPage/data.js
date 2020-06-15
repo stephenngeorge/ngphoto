@@ -18,9 +18,9 @@ const data = {
   iconsList: {
     direction: "row",
     icons: [
-      { name: 'facebook', size: 'md', src: FACEBOOK_LOGO, url: 'https://www.facebook.com' },
-      { name: 'twitter', size: 'md', src: TWITTER_LOGO, url: 'https://twitter.com' },
-      { name: 'email', size: 'md', src: SENT_MAIL_ICON, url: 'https://google.co.uk' }
+      { name: 'facebook', size: 'md', src: FACEBOOK_LOGO, url: 'https://www.facebook.com/NeilGeorgePhotography/' },
+      { name: 'twitter', size: 'md', src: TWITTER_LOGO, url: 'https://twitter.com/NeilG199' },
+      { name: 'email', size: 'md', src: SENT_MAIL_ICON, url: 'mailto:neil.george@icloud.com' }
     ]
   },
   cardBlock: {

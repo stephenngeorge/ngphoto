@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import firebase from 'firebase/app'
-import 'firebase/database'
+import { useFirebaseDb } from '../../utils'
 
 import {
   ButtonRow,
@@ -16,35 +15,35 @@ const BuyPage = () => {
   const [cardsData, setCardsData] = useState([])
   const [filteredCardsData, setFilteredCardsData] = useState([])
   const [productType, setProductType] = useState('standard')
-
+  const [productsVal, dbRef] = useFirebaseDb("Products")
+  
+  useEffect(() => window.scrollTo(0, 0), [])
   useEffect(() => {
-    window.scrollTo(0, 0)
-    const db = firebase.database()
-    const dbRef = db.ref()
-    dbRef.on('value', snapshot => {
-      const products = []
-      if (snapshot !== null) {
-        Object.entries(snapshot.val().Products).forEach(([_, product]) => {
-          products.push(product)
-        })
-        setCardsData(products)
-        setFilteredCardsData(products.filter(product => product.hasOwnProperty('priceLtdEdPrint')))
-      }
+    const products = []
+    Object.entries(productsVal).forEach(([key, product]) => {
+      products.push(product)
     })
-  }, [])
-
-  console.log(filteredCardsData);
+    const sortedCards = products.sort((a, b) => a.weight - b.weight)
+    setCardsData(sortedCards)
+    setFilteredCardsData(sortedCards.filter(product => product.hasOwnProperty('priceLtdEdPrint')))
+    return () => {
+      if (dbRef !== null) dbRef.off()
+    }
+  }, [productsVal, dbRef])
 
   return (
     <div className="page site-page buy-page">
       <TextSection { ...data.textSection }>
         <RichText>
           <p>
-            If you’d like to buy any of the pictures you’ve seen, then 
-            contact Neil with the name of the picture(s) you’re interested 
-            in and the size(s) you would like them (from the list below). 
-            If you’d like something bespoke/customised, please get in touch 
-            and Neil will be happy to talk things through with you.
+            If you would like to buy any of the pictures you have seen, then please 
+            contact Neil with the names of the picture(s) you are interested in and 
+            the size(s) you would like them (from the list below). Please note that 
+            images with “Limited Edition” in the title are limited to a print run of 50 
+            and come with a Certificate of Authenticity. If you would 
+            like something bespoke/customised, please get in touch and Neil will be happy 
+            to talk things through with you. There may be a small charge for postage and 
+            packaging (to be agreed at time of order).
           </p>
         </RichText>
       </TextSection>
@@ -72,8 +71,12 @@ const BuyPage = () => {
                 {
                   card.printSize !== "Greetings Cards" &&
                   <div>
-                    <p className="card-details">Mounted: £{ card.priceMounted }</p>
-                    <p className="card-details">Framed: £{ card.priceFramed }</p>
+                    <p className="card-details"><span className="color--main">Mounted:</span> £{ card.priceMounted }</p>
+                    <p className="card-details"><span className="color--main">Framed:</span> £{ card.priceFramed }</p>
+                    {
+                      card.pricePrint &&
+                      <p className="card-details"><span className="color--main">Print (unmounted):</span> £{ card.pricePrint }</p>
+                    }
                   </div>
                 }
                 {
@@ -97,16 +100,19 @@ const BuyPage = () => {
               ],
               cardHeading: `${card.printSize} print`,
               cardSubHeading: card.hasOwnProperty("mountSize") ? `${card.mountSize} mount` : null,
-              borderColor: "primary"
+              borderColor: "main"
             }
 
             return (
               <Card key={ i } { ...cardData }>
                 {
                   <div>
-                    <p className="card-details">Print: £{ card.priceLtdEdPrint }</p>
-                    <p className="card-details">Mounted: £{ card.priceLtdEdMounted }</p>
-                    <p className="card-details">Framed: £{ card.priceLtdEdFramed }</p>
+                    <p className="card-details"><span className="color--main">Mounted:</span> £{ card.priceLtdEdMounted }</p>
+                    <p className="card-details"><span className="color--main">Framed:</span> £{ card.priceLtdEdFramed }</p>
+                    {
+                      card.priceLtdEdPrint &&
+                      <p className="card-details"><span className="color--main">Print (unmounted):</span> £{ card.priceLtdEdPrint }</p>
+                    }
                   </div>
                 }
               </Card>
