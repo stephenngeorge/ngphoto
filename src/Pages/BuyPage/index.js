@@ -14,6 +14,9 @@ import data from './data'
 
 const BuyPage = () => {
   const [cardsData, setCardsData] = useState([])
+  const [filteredCardsData, setFilteredCardsData] = useState([])
+  const [productType, setProductType] = useState('standard')
+
   useEffect(() => {
     window.scrollTo(0, 0)
     const db = firebase.database()
@@ -21,13 +24,16 @@ const BuyPage = () => {
     dbRef.on('value', snapshot => {
       const products = []
       if (snapshot !== null) {
-        Object.entries(snapshot.val().Products).forEach(([key, product]) => {
+        Object.entries(snapshot.val().Products).forEach(([_, product]) => {
           products.push(product)
         })
         setCardsData(products)
+        setFilteredCardsData(products.filter(product => product.hasOwnProperty('priceLtdEdPrint')))
       }
     })
   }, [])
+
+  console.log(filteredCardsData);
 
   return (
     <div className="page site-page buy-page">
@@ -43,11 +49,15 @@ const BuyPage = () => {
         </RichText>
       </TextSection>
       <ButtonRow { ...data.buttonRow } />
+      <div className="product-type__controls">
+        <button onClick={() => setProductType('standard')}>Standard</button>
+        <button onClick={() => setProductType('limited-edition')}>Limited Edition</button>
+      </div>
       <CardBlock { ...data.cardBlock }>
         {
+          productType === 'standard' &&
           cardsData.length > 0 &&
           cardsData.map((card, i) => {
-            console.log(card)
             const cardData = {
               additionalClasses: [
                 'buy-page--card',
@@ -71,6 +81,32 @@ const BuyPage = () => {
                   <div>
                     <p className="card-details">{ card.largePack }</p>
                     <p className="card-details">{ card.smallPack }</p>
+                  </div>
+                }
+              </Card>
+            )
+          })
+        }
+        {
+          productType === 'limited-edition' &&
+          filteredCardsData.length > 0 &&
+          filteredCardsData.map((card, i) => {
+            const cardData = {
+              additionalClasses: [
+                'buy-page--card'
+              ],
+              cardHeading: `${card.printSize} print`,
+              cardSubHeading: card.hasOwnProperty("mountSize") ? `${card.mountSize} mount` : null,
+              borderColor: "primary"
+            }
+
+            return (
+              <Card key={ i } { ...cardData }>
+                {
+                  <div>
+                    <p className="card-details">Print: £{ card.priceLtdEdPrint }</p>
+                    <p className="card-details">Mounted: £{ card.priceLtdEdMounted }</p>
+                    <p className="card-details">Framed: £{ card.priceLtdEdFramed }</p>
                   </div>
                 }
               </Card>

@@ -23,7 +23,7 @@ const data = {
     ]
   },
   cardBlock: {
-    backgroundColor: "grey",
+    backgroundColor: "white",
     loadingImage: NGPHOTO_LOGO_MARK_BW,
     rowContains: 3,
     wrapOn: "row"
