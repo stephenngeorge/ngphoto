@@ -12,6 +12,10 @@
 
 .product-type__controls {
   display: flex;
+  flex-direction: column;
+  @include breakpoint("md") {
+    flex-direction: row;
+  }
   justify-content: flex-start;
   margin: 1rem auto 2rem;
 
@@ -26,6 +30,11 @@
     text-decoration: underline;
     color: $color--secondary;
     font-family: $font-family-serif;
+
+    width: 100%;
+    @include breakpoint("md") {
+      width: unset;
+    }
 
     cursor: pointer;
     &:hover {
