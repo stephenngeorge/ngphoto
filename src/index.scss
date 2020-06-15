@@ -10,6 +10,44 @@
   }
 }
 
+.product-type__controls {
+  display: flex;
+  justify-content: flex-start;
+  margin: 1rem auto 2rem;
+
+  button {
+    padding: 1rem;
+    margin-right: 1rem;
+    background: none;
+    border: none;
+    border-radius: .25rem;
+    background-color: $color--light;
+    text-transform: uppercase;
+    text-decoration: underline;
+    color: $color--secondary;
+    font-family: $font-family-serif;
+
+    cursor: pointer;
+    &:hover {
+      color: darken($color--secondary, 10%);
+    }
+    &:focus {
+      outline: none;
+    }
+
+    transition: color .2s ease-out, background .2s ease-out;
+  }
+
+  button.active {
+    color: $color--light;
+    background-color: $color--secondary;
+    text-decoration: none;
+    &:hover {
+      background-color: darken($color--secondary, 10%);
+    }
+  }
+}
+
 .buy-page--card {
   max-width: 32%;
   margin: 1rem 0 !important;

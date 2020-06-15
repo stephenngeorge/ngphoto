@@ -48,10 +48,18 @@ const BuyPage = () => {
         </RichText>
       </TextSection>
       <ButtonRow { ...data.buttonRow } />
-      <div className="product-type__controls">
-        <button onClick={() => setProductType('standard')}>Standard</button>
-        <button onClick={() => setProductType('limited-edition')}>Limited Edition</button>
+
+      <div className="product-type__controls text-container--very-narrow">
+        <button
+          onClick={() => setProductType('standard')}
+          className={productType === 'standard' ? 'active' : ''}
+        >Standard</button>
+        <button
+          onClick={() => setProductType('limited-edition')}
+          className={productType === 'limited-edition' ? 'active' : ''}
+        >Limited Edition</button>
       </div>
+
       <CardBlock { ...data.cardBlock }>
         {
           productType === 'standard' &&
