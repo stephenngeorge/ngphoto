@@ -24,6 +24,10 @@ const data = {
         buttonText: "Get in touch"
       }
     ]
+  },
+  quote: {
+    citation: 'David Alan Harvey',
+    quoteText: 'Don’t shoot what it looks like. Shoot what it feels like.'
   }
 }
 

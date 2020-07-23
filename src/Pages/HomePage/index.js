@@ -7,6 +7,7 @@ import { slugify } from '../../utils'
 import {
   ButtonRow,
   HeroGallery,
+  Quote,
   RichText,
   StaticGallery,
   TextSection
@@ -100,6 +101,7 @@ const HomePage = () => {
     <div className='page home-page'>
       <HeroGallery images={ images } />
       <TextSection { ...data.textSection }>
+        <Quote {...data.quote} />
         <RichText>
           <p>
             Neil has been taking photographs for over 40 years, switching from film to 
