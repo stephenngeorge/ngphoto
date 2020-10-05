@@ -1,0 +1,37 @@
+/// handle the background colour of a button, set hover states
+/// and do conditional checks for button--outline
+///
+/// @content
+/// @author stephen pal-george
+/// @param {string} $color
+/// @param {boolean} $outline
+/// @param {Color} $textColor
+///
+@mixin button-bg-handler($color, $outline: false, $textColor: $color--light) {
+  transition: background-color .3s ease, color .3s ease;
+  @if $outline == true {
+    background-color: #fff;
+    &:hover {
+      background-color: $color !important;
+      color: $textColor;
+    }
+  }
+  @else {
+    &:hover {
+      background-color: darken($color, 10%) !important;
+    }
+  }
+}
+
+/// handle the border sstyles of a button and its hover states
+///
+/// @content
+/// @author stephen pal-george
+/// @param {string} $color
+///
+@mixin button-border-handler($color) {
+  transition: border .3s ease;
+  &:hover {
+    border-color: darken($color, 10%) !important;
+  }
+}

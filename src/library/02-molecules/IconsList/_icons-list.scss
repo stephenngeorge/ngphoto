@@ -1,0 +1,56 @@
+.icons-list {
+  display: flex;
+  list-style-type: none;
+
+  .icon { opacity: 0; }
+  img { width: 100%; }
+}
+
+.icons-list.icons-list--column {
+  flex-direction: column;
+  li {
+    margin-bottom: 1.5rem;
+    &:nth-last-child(1) {
+      margin-bottom: 0;
+    }
+  }
+}
+.icons-list.icons-list--row {
+  flex-direction: row;
+  li {
+    margin-right: 1.5rem;
+    &:nth-last-child(1) {
+      margin-right: 0;
+    }
+  }
+}
+.icons-list.icons-list--column-reverse {
+  flex-direction: column-reverse;
+  li {
+    margin-bottom: 1.5rem;
+    &:nth-child(1) {
+      margin-bottom: 0;
+    }
+  }
+}
+.icons-list.icons-list--row-reverse {
+  flex-direction: row-reverse;
+  li {
+    margin-right: 1.5rem;
+    &:nth-child(1) {
+      margin-right: 0;
+    }
+  }
+}
+
+.icons-list--side-bar {
+  display: none;
+  position: absolute;
+  left: 100%;
+  bottom: 4rem;
+  padding-left: 1rem;
+
+  @include breakpoint("md") {
+    display: flex;
+  }
+}

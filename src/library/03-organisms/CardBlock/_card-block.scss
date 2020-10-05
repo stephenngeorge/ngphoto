@@ -1,0 +1,42 @@
+.card-block__card-wrapper {
+  display: flex;
+  flex-flow: row wrap;
+  padding: 2rem;
+  max-width: 1248px;
+  margin: 0 auto;
+
+  .card {
+    margin: 1rem;
+    max-width: 100% !important;
+    transform: translateX(1rem);
+    opacity: 0;
+    @include breakpoint("lg") {
+      max-width: 50% !important;
+    }
+    min-width: 15rem;
+    flex-grow: 1;
+
+    transition: box-shadow .3s ease;
+    &:hover {
+      box-shadow: 0 .25rem .8rem 0 rgba(0, 0, 0, .8);
+    }
+  }
+}
+
+.loading-image {
+  padding: 5rem 0;
+  margin: 0 auto;
+
+  animation: is-loading 2s cubic-bezier(.17,.67,.06,1.21) infinite;
+}
+
+@for $i from 2 through 4 {
+  .card-block.card-block--row-#{$i} .card {
+    width: (96% / $i) - $i;
+  }
+}
+
+@keyframes is-loading {
+  0% { transform: rotate(0); }
+  70%, 100% { transform: rotate(180deg); }
+}

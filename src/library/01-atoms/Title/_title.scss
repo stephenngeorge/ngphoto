@@ -1,0 +1,43 @@
+.title {
+  position: relative;
+  width: fit-content;
+  overflow-x: visible;
+
+  .underline {
+    position: absolute;
+    content: "";
+    // force :after pseudo element to be behind text
+    z-index: -10;
+    height: 1rem;
+    // left value is (width - 100) / 2
+    left: -2%;
+    top: 100%;
+    transform: translateY(-100%);
+    opacity: .4;
+  }
+}
+
+@keyframes title-underline-full {
+  from { width: 0; }
+  to { width: 6rem; }
+}
+@keyframes title-underline-half {
+  from { width: 0; }
+  to { width: 6rem; }
+}
+
+@each $duration, $value in $theme-animation-durations {
+  .title-underline-full--#{$duration} {
+    animation-name: title-underline-full;
+    animation-fill-mode: forwards;
+    animation-timing-function: cubic-bezier(.17, .67, .56, 1.21);
+    animation-duration: $value;
+  }
+
+  .title-underline-half--#{$duration} {
+    animation-name: title-underline-half;
+    animation-fill-mode: forwards;
+    animation-timing-function: cubic-bezier(.17, .67, .56, 1.21);
+    animation-duration: $value;
+  }
+}

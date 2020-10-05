@@ -1,0 +1,106 @@
+.image-scroller {
+  width: 100%;
+  display: flex;
+  flex-flow: row nowrap;
+  overflow: scroll;
+  align-items: center;
+  padding: 0 1rem 3rem;
+
+  &__image {
+    flex-shrink: 0;
+    position: relative;
+    width: 15rem;
+    padding: 3rem 1rem;
+    &:nth-last-child(1) {
+      padding-right: 2rem;
+    }
+    color: inherit;
+
+    .image-loader {
+      box-shadow: 0 .25rem .5rem 0 rgba(0, 0, 0, .65);
+      transition: box-shadow .3s ease;
+      &:hover {
+        box-shadow: 0 .5rem .8rem 0 rgba(0, 0, 0, .8);
+      }
+    }
+
+    &--name {
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+
+      width: 80%;
+      text-align: center;
+      opacity: .2;
+      transition: opacity .4s ease;
+      color: inherit;
+    }
+
+    &:hover {
+      cursor: pointer;
+      .image-scroller__image--name {
+        opacity: 1;
+      }
+    }
+  }
+}
+
+.image-focus {
+  // opacity is set in the JS code after component
+  // has loaded. @see './ImageFocus.js'
+  opacity: 0;
+  transition: opacity .2s ease;
+  padding: 1rem;
+  position: relative;
+  overflow: visible;
+  @include breakpoint("md") {
+    padding: 2rem;
+    padding-bottom: 4rem;
+  }
+  @include breakpoint("lg") {
+    padding: 2rem 8rem;
+  }
+  // set height depending on device aspect ratio
+  &--landscape { height: 84vh; }
+  &--portrait { height: 55vh; }
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  &--image {
+    max-height: 100%;
+    max-width: 100%;
+    box-shadow: 0 .25rem .5rem 0 rgba(0, 0, 0, .65);
+  }
+
+  .image-name {
+    display: none;
+    @include breakpoint("lg") {
+      display: block;
+    }
+  }
+
+  .image-control {
+    position: absolute;
+    top: 50%;
+    width: 4rem;
+    cursor: pointer;
+
+    display: none;
+    @include breakpoint("lg") {
+      display: block;
+    }
+  }
+
+  #scroll-left {
+    left: 2rem;
+    transform: translateY(-50%) rotate(90deg);
+  }
+
+  #scroll-right {
+    right: 2rem;
+    transform: translateY(-50%) rotate(-90deg);
+  }
+}

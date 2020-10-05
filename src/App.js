@@ -1,8 +1,8 @@
-import React from 'react'
-import { BrowserRouter as Router, Redirect, Route, Switch } from 'react-router-dom'
+import React from 'react';
+import { BrowserRouter as Router, Redirect, Route, Switch } from 'react-router-dom';
 
-import { Page } from 'loris-ui.portfolio'
-import pageData from './Pages/pageData'
+import { Page } from './library';
+import pageData from './Pages/pageData';
 
 import {
   BuyPage,
@@ -10,7 +10,7 @@ import {
   GalleriesPage,
   HomePage,
   Page404
-} from './Pages'
+} from './Pages';
 
 const App = () => {
   return (
@@ -30,7 +30,7 @@ const App = () => {
         </Page>
       </div>
     </Router>
-  )
+  );
 }
 
-export default App
+export default App;

@@ -1,0 +1,45 @@
+.cover-image {
+  display: flex;
+  overflow: hidden;
+  
+  img {
+    height: 100%;
+    display: block;
+  }
+}
+
+// image-- classes represent different
+// object-fit property values
+.cover-image.image--cover {
+  img {
+    width: 100%;
+    object-fit: cover;
+  }
+}
+
+.cover-image.image--contain {
+  img {
+    object-fit: contain;
+  }
+}
+
+// image-loading is applied until image
+// has been completed downloaded from remote source
+.cover-image.image-loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  // loading images have a placeholder image
+  // that rotates as target image loads
+  img {
+    max-width: 12rem;
+    object-fit: unset;
+    animation: cover-image-spinner 2s cubic-bezier(.17,.67,.06,1.21) infinite;
+  }
+}
+
+// define animation
+@keyframes cover-image-spinner {
+  0% { transform: rotate(0); }
+  70%, 100% { transform: rotate(180deg); }
+}

@@ -1,0 +1,12 @@
+.page {
+  min-height: 100vh;
+  position: relative;
+
+  .footer {
+    position: absolute;
+    bottom: 0;
+  }
+}
+
+.page.home-page { padding-top: 0; }
+.page.site-page { padding-top: 3.5rem; }

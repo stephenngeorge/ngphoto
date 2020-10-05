@@ -1,0 +1,39 @@
+.button-row {
+  position: relative;
+  width: 100%;
+  &--list {
+    display: flex;
+    > li {
+      margin-right: 2rem;
+    }
+  }
+
+  .underline {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    width: 0;
+    transform: translateY(-50%);
+    border-bottom: 2px solid $color--main;
+    z-index: $zindex-behind;
+  }
+  // move row up 50%, ensures the central line is
+  // aligned with the bottom of the previous component
+  transform: translateY(-50%);
+  // set initial button position in anticipation of animation
+  .link-button {
+    transform: translateY(1rem);
+    opacity: 0;
+  }
+}
+
+// define aniation for the title underline div
+@keyframes scale-in-underline {
+  from { width: 0; }
+  to { width: 100%; }
+}
+
+.scale-in-underline {
+  animation: scale-in-underline $animation-duration--slow forwards;
+  animation-delay: .3s;
+}

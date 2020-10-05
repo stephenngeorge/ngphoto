@@ -1,0 +1,39 @@
+.page-nav {
+  width: 100%;
+  max-width: 1248px;
+}
+
+.page-nav__link {
+  position: relative;
+  margin: 0 1rem;
+  margin-bottom: .75rem;
+  @include breakpoint("md") {
+    margin-bottom: 0;
+  }
+  text-decoration: none;
+  color: inherit;
+  font-family: inherit;
+  font-weight: inherit;
+  opacity: 0;
+
+  .underline {
+    position: absolute;
+    z-index: -10;
+    width: 108%;
+    height: 50%;
+    // left value is -(width - 100) / 2
+    left: -4%;
+    bottom: -.2rem;
+    opacity: .4;
+
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform .3s ease-out;
+  }
+}
+
+.page-nav__link:focus > .underline,
+.page-nav__link:active > .underline,
+.page-nav__link:hover > .underline {
+  transform: scaleX(1);
+}

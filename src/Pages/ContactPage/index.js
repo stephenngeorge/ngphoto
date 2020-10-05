@@ -1,37 +1,38 @@
-import React, { useEffect, useState } from 'react'
-import { Link } from 'react-router-dom'
-import { useFirebaseDb } from '../../utils'
+import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
+import { useFirebaseDb } from '../../utils';
 
 import {
   Card,
   CardBlock,
   IconsList,
   RichText,
-  TextSection
-} from 'loris-ui.portfolio'
+  TextSection,
+} from '../../library';
+
 import {
   CLOCK_ICON,
   MAPPIN_ICON
-} from '../../assets'
+} from '../../assets';
 
-import data from './data'
+import data from './data';
 
 const ContactPage = () => {
-  const [cardsData, setCardsData] = useState([])
-  const [eventsVal, dbRef] = useFirebaseDb("Events")
+  const [cardsData, setCardsData] = useState([]);
+  const [eventsVal, dbRef] = useFirebaseDb("Events");
 
-  useEffect(() => window.scrollTo(0, 0), [])
+  useEffect(() => window.scrollTo(0, 0), []);
   useEffect(() => {
     const events = []
     Object.entries(eventsVal).forEach(([key, event]) => {
       events.push(event)
-    })
-    setCardsData(events.sort((a,b) => a.weight - b.weight))
+    });
+    setCardsData(events.sort((a,b) => a.weight - b.weight));
 
     return () => {
       if (dbRef !== null) dbRef.off()
     }
-  }, [eventsVal, dbRef])
+  }, [eventsVal, dbRef]);
 
   return (
     <div className="page site-page contact-page">
@@ -94,7 +95,7 @@ const ContactPage = () => {
         }
       </CardBlock>
     </div>
-  )
+  );
 }
 
-export default ContactPage
+export default ContactPage;

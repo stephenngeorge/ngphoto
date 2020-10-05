@@ -1,9 +1,9 @@
-import React from 'react'
-import { useLocation } from 'react-router-dom'
-import { Title } from 'loris-ui.portfolio'
+import React from 'react';
+import { useLocation } from 'react-router-dom';
+import { Title } from '../../library';
 
 const Page404 = () => {
-  const { pathname } = useLocation()
+  const { pathname } = useLocation();
   return (
     <div className="page site-page page-404">
       <div className="page-wrapper">
@@ -15,7 +15,7 @@ const Page404 = () => {
         </p>
       </div>
     </div>
-  )
+  );
 }
 
-export default Page404
+export default Page404;

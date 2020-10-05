@@ -8,7 +8,7 @@ import App from './App'
 import * as serviceWorker from './serviceWorker'
 import firebase from 'firebase/app'
 
-import { Themer } from 'loris-ui.portfolio'
+import { Themer } from './library';
 
 dotenv.config()
 // firebase setup

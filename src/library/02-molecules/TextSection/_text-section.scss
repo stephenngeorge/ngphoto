@@ -1,0 +1,19 @@
+.text-section {
+  position: relative;
+  overflow: visible;
+
+  .title {
+    width: 75%;
+  }
+  .rich-text {
+    padding: 1rem 0;
+  }
+
+  a {
+    color: $color--secondary;
+    transition: color .2s ease;
+    &:hover {
+      color: darken($color--secondary, 10%);
+    }
+  }
+}

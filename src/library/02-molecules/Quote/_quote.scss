@@ -1,0 +1,28 @@
+.quote {
+  padding: 2rem 1rem;
+  position: relative;
+  &::before {
+    position: absolute;
+    content: "\0201C";
+    top: .5rem;
+    left: 0;
+    font-size: 11rem;
+    font-family: $font-family-cursive;
+    color: rgba($color--secondary, .3);
+  }
+
+  blockquote {
+    display: flex;
+    flex-direction: column;
+    font-family: $font-family-cursive;
+    cite {
+      font-family: $font-family-serif;
+      font-style: normal;
+      color: $color--secondary;
+    }
+  }
+
+  &__text--large { font-size: 2rem; }
+  &__text--medium { font-size: 1.6rem; }
+  &__text--small { font-size: 1.2rem; }
+}

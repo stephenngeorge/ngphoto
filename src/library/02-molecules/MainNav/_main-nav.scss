@@ -1,0 +1,268 @@
+// LOCAL VARIABLES
+$menu-height--tall: 5rem;
+$menu-height--short: 3.5rem;
+$menu-item--padding: 1.5rem;
+
+$menu-shadow: 0 .25rem .375rem 0 rgba(0, 0, 0, .4);
+
+// generic menu styles
+.main-nav {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 .5rem;
+  @include breakpoint("md") {
+    padding: 0 1.5rem;
+  }
+  overflow: visible;
+
+  position: fixed;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: 1248px;
+  height: $menu-height--short;
+  z-index: $zindex-foreground;
+
+  transition: height .1s ease-out;
+  &--wide {
+    .site-title,
+    .main-nav__menu a {
+      opacity: 0;
+    }
+  }
+  &--narrow {
+    .site-title,
+    .main-nav__menu a {
+      opacity: 1;
+    }
+  }
+  // remove underline from all menu links
+  a {
+    text-decoration: none;
+  }
+
+  .site-title {
+    display: flex;
+    align-items: center;
+    .site-logo {
+      height: 2rem;
+      margin-right: 1rem;
+      transition: transform .4s cubic-bezier(.17, .67, .75, 1.36);
+    }
+    &:hover .site-logo {
+      transform: rotate(135deg);
+    }
+
+    p {
+      font-family: inherit;
+      display: none;
+      @include breakpoint("md") {
+        display: block;
+      }
+    }
+  }
+
+  // .main-nav__controls contains branding link &
+  // menu icon button for toggling menu on small devices.
+  &__controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: $menu-height--short;
+    // pass theme font size down from parent
+    font-size: inherit;
+
+    a {
+      font-size: inherit;
+      padding: 0 $menu-item--padding;
+    }
+  }
+
+  // .main-nav__menu-icon is the button that appears on
+  // mobile devices and toggles the menu.
+  &__menu-icon {
+    background: none;
+    border: none;
+    width: $menu-height--short;
+    position: relative;
+    align-self: stretch;
+    display: block;
+    @include breakpoint("lg") {
+      display: none;
+    }
+
+    &:focus {
+      outline: none;
+    }
+
+    // styles for all three bars of the menu icon
+    > div {
+      position: absolute;
+      left: 50%;
+      width: 50%;
+      height: .25rem;
+      background-color: $color--light;
+      transform: translate(-50%, -50%);
+      transition: width .2s ease;
+    }
+    // styles specific to each bar of the menu icon
+    &--top {
+      top: 30%;
+    }
+    &--middle {
+      top: 50%;
+    }
+    &--bottom {
+      top: 70%;
+    }
+  }
+
+  // The nav that contains a series of links to different
+  // pages within the site.
+  &__menu {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    left: -100%;
+    top: $menu-height--short;
+    width: 100%;
+    z-index: -10;
+    transition: height .2s ease-out, left .4s ease-out;
+    @include breakpoint("lg") {
+      position: relative;
+      flex-direction: row;
+      left: unset;
+      top: unset;
+      width: fit-content;
+      box-shadow: none;
+    }
+
+    a {
+      color: inherit;
+      font-size: 1rem;
+      font-weight: $font-weight-heavy;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 2rem $menu-item--padding;
+      transition: background-color .2s ease, color .2s ease;
+      @include breakpoint("lg") {
+        padding: 0 $menu-item--padding;
+        font-size: .8rem;
+      }
+      text-transform: uppercase;
+    }
+  }
+
+  .onscreen {
+    left: 0;
+  }
+
+  .icon-arrow {
+    .main-nav__menu-icon--middle {
+      width: 35%;
+    }
+    .main-nav__menu-icon--bottom {
+      width: 10%;
+    }
+  }
+}
+
+.main-nav--dark {
+  position: fixed;
+  &::after {
+    position: absolute;
+    content: "";
+    top: 0;
+    left: 50%;
+    width: 100vw;
+    height: 100%;
+    transform: translateX(-50%);
+    background-color: rgba($color--dark, 1);
+    box-shadow: $menu-shadow;
+    z-index: -1;
+  }
+  .main-nav__controls a {
+    color: $color--light;
+  }
+
+  .main-nav__menu {
+    z-index: 1;
+    background-color: $color--dark;
+    color: $color--light;
+    box-shadow: $menu-shadow;
+    @include breakpoint("lg") {
+      box-shadow: none;
+      background-color: none;
+    }
+
+    a:hover {
+      background-color: darken($color--dark, 4%);
+      color: $color--secondary;
+    }
+  }
+}
+
+.main-nav--light {
+  height: $menu-height--tall;
+  position: fixed;
+  &::after {
+    position: absolute;
+    content: "";
+    top: 0;
+    left: 50%;
+    width: 100vw;
+    height: 100%;
+    transform: translateX(-50%);
+    background-color: rgba($color--dark, .4);
+    z-index: -1;
+  }
+
+  .main-nav__menu {
+    z-index: 1;
+  }
+
+  .main-nav__controls {
+    height: $menu-height--tall;
+    a {
+      color: $color--light;
+      font-weight: $font-weight-heavy;
+    }
+  }
+
+  .main-nav__menu {
+    background: none;
+    color: $color--light;
+
+    a:hover {
+      color: $color--secondary;
+      background-color: rgba($color--dark, .2)
+    }
+  }
+}
+
+// .nav-wrapper--dark,
+// .nav-wrapper--light {
+//   position: fixed;
+//   top: 0;
+//   left: 0;
+//   width: 100%;
+//   z-index: $zindex-foreground - 10;
+
+//   transition: background-color .2s ease, height .2s ease;
+// }
+
+// .nav-wrapper--dark {
+//   height: $menu-height--short;
+//   background-color: $color--dark;
+//   box-shadow: $menu-shadow;
+//   border: 1px solid $color--dark;
+// }
+
+// .nav-wrapper--light {
+//   height: $menu-height--tall;
+//   background-color: rgba($color--dark, .4);
+// }

@@ -1,0 +1,22 @@
+.spinner {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  > * {
+    width: 90%;
+    max-width: 12rem;
+    animation: spinner cubic-bezier(.17,.67,.06,1.21) infinite;
+  }
+}
+
+.spinner--slow > * { animation-duration: 4s; }
+.spinner--normal > * { animation-duration: 2s; }
+.spinner--fast > * { animation-duration: 1s; }
+
+@keyframes spinner {
+  0% { transform: rotate(0); }
+  70%, 100% { transform: rotate(180deg); }
+}

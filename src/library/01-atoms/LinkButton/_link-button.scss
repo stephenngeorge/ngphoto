@@ -1,0 +1,15 @@
+.link-button {
+  cursor: pointer;
+  padding: .7rem .5rem;
+  @include breakpoint("md") {
+    padding: .7rem 1rem;
+  }
+  text-decoration: none;
+  text-align: center;
+}
+.link-button--large {
+  padding: 1rem 1.4rem;
+}
+.link-button--block {
+  width: 100%;
+}

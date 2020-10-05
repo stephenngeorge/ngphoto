@@ -1,0 +1,43 @@
+.hero-gallery {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  
+  .cover-image {
+    flex-shrink: 0;
+  }
+
+  .down-chevron {
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translate(-50%, -.6rem);
+    z-index: 100;
+    width: 3rem;
+    animation: chevron-pulse 3s infinite;
+    cursor: pointer;
+  }
+}
+
+.image-cross-fade {
+  // animation duration should equal the interval in
+  // the setTimeout function in the component JS file
+  animation: image-cross-fade 7.4s forwards;
+}
+
+@keyframes image-cross-fade {
+  0% { opacity: 0; }
+  20%, 90% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+@keyframes image-fade-out {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+
+@keyframes chevron-pulse {
+  0% { transform: translate(-50%, -.6rem); }
+  40%, 90% { transform: translate(-50%, 0); }
+  100% { transform: translate(-50%, -.6rem); }
+}

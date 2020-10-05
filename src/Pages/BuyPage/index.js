@@ -1,35 +1,35 @@
-import React, { useEffect, useState } from 'react'
-import { useFirebaseDb } from '../../utils'
+import React, { useEffect, useState } from 'react';
+import { useFirebaseDb } from '../../utils';
 
 import {
   ButtonRow,
   Card,
   CardBlock,
   RichText,
-  TextSection
-} from 'loris-ui.portfolio'
+  TextSection,
+} from '../../library';
 
-import data from './data'
+import data from './data';
 
 const BuyPage = () => {
-  const [cardsData, setCardsData] = useState([])
-  const [filteredCardsData, setFilteredCardsData] = useState([])
-  const [productType, setProductType] = useState('standard')
-  const [productsVal, dbRef] = useFirebaseDb("Products")
+  const [cardsData, setCardsData] = useState([]);
+  const [filteredCardsData, setFilteredCardsData] = useState([]);
+  const [productType, setProductType] = useState('standard');
+  const [productsVal, dbRef] = useFirebaseDb("Products");
   
-  useEffect(() => window.scrollTo(0, 0), [])
+  useEffect(() => window.scrollTo(0, 0), []);
   useEffect(() => {
-    const products = []
+    const products = [];
     Object.entries(productsVal).forEach(([key, product]) => {
       products.push(product)
-    })
-    const sortedCards = products.sort((a, b) => a.weight - b.weight)
-    setCardsData(sortedCards)
-    setFilteredCardsData(sortedCards.filter(product => product.hasOwnProperty('priceLtdEdPrint')))
+    });
+    const sortedCards = products.sort((a, b) => a.weight - b.weight);
+    setCardsData(sortedCards);
+    setFilteredCardsData(sortedCards.filter(product => product.hasOwnProperty('priceLtdEdPrint')));
     return () => {
       if (dbRef !== null) dbRef.off()
     }
-  }, [productsVal, dbRef])
+  }, [productsVal, dbRef]);
 
   return (
     <div className="page site-page buy-page">
@@ -129,7 +129,7 @@ const BuyPage = () => {
         }
       </CardBlock>
     </div>
-  )
+  );
 }
 
-export default BuyPage
+export default BuyPage;

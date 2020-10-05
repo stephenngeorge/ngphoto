@@ -1,0 +1,25 @@
+.image-loader {
+  img {
+    display: block;
+    width: 100%;
+    min-height: 100%;
+  }
+}
+
+// set styles for placeholder image, ensure it doesn't
+// get too large.
+.image-loader.image-loader--loading {
+  display: flex;
+  justify-content: center;
+  img {
+    padding: 2rem;
+    max-width: 12rem;
+    animation: loading-animation 2s cubic-bezier(.17,.67,.06,1.21) infinite;
+  }
+}
+
+// define animation
+@keyframes loading-animation {
+  0% { transform: rotate(0); }
+  70%, 100% { transform: rotate(180deg); }
+}

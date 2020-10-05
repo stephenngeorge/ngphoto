@@ -1,4 +1,4 @@
-@import '~loris-ui.portfolio/dist/index.scss';
+@import './library/index.scss';
 
 .buy-page--text,
 .contact-page--text {
@@ -163,4 +163,8 @@
     margin-left: 2rem;
     text-transform: capitalize;
   }
+}
+
+blockquote, .quote {
+  overflow: hidden;
 }

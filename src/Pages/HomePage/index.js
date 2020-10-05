@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from 'react'
-import firebase from 'firebase/app'
-import 'firebase/database'
+import React, { useEffect, useState } from 'react';
+import firebase from 'firebase/app';
+import 'firebase/database';
 
-import { slugify } from '../../utils'
+import { slugify } from '../../utils';
 
 import {
   ButtonRow,
@@ -11,14 +11,15 @@ import {
   RichText,
   StaticGallery,
   TextSection
-} from 'loris-ui.portfolio'
-import data from './data'
-import { NGPHOTO_LOGO_MARK_BW } from '../../assets'
+} from '../../library';
+
+import data from './data';
+import { NGPHOTO_LOGO_MARK_BW } from '../../assets';
 
 const HomePage = () => {
-  const [images, setImages] = useState([])
-  const [staticGalleryImages, setStaticGalleryImages] = useState([])
-  const [staticGallerySideNav, setStaticGallerySideNav] = useState([])
+  const [images, setImages] = useState([]);
+  const [staticGalleryImages, setStaticGalleryImages] = useState([]);
+  const [staticGallerySideNav, setStaticGallerySideNav] = useState([]);
   const staticGalleryData = {
     titleLevel: 2,
     titleText: "Latest Work",
@@ -27,29 +28,29 @@ const HomePage = () => {
   }
 
   useEffect(() => {
-    window.scrollTo(0, 0)
+    window.scrollTo(0, 0);
     // get data
     // each image should have imageAlt, imageId,
     // imageSrc and imagePlaceholderSrc (which is the same for every image)
-    const db = firebase.database()
-    const dbRef = db.ref("Photos")
+    const db = firebase.database();
+    const dbRef = db.ref("Photos");
     // fetches images for the hero gallery component
     const getHomePageImages = () => {
-      const homepageImages = []
+      const homepageImages = [];
       dbRef.on('value', snapshot => {
         if (snapshot !== null) {
-          const imageData = snapshot.val().Home_Page.images
+          const imageData = snapshot.val().Home_Page.images;
           // pass all values of image along with the additional
           // image placeholder property
           Object.entries(imageData).forEach(([key, image]) => {
             homepageImages.push({
               imagePlaceholderSrc: NGPHOTO_LOGO_MARK_BW,
               ...image
-            })
-          })
-          setImages(homepageImages)
+            });
+          });
+          setImages(homepageImages);
         }
-      })
+      });
     }
     // fetches images and sidenav data for the
     // static gallery component
@@ -69,33 +70,33 @@ const HomePage = () => {
                 // weight is used to order the list of galleries
                 // see `sort` function in `setStaticGallerySideNav` below
                 weight: galleryData.weight
-              })
+              });
             }
-          })
+          });
 
           // fetch images from new work gallery - to be rendered in the
           // static gallery component
-          const staticGalleryImages = snapshot.val().New_Work.images
-          const imagesData = []
+          const staticGalleryImages = snapshot.val().New_Work.images;
+          const imagesData = [];
           // pass along all image values with the additional
           // placeholderImageSrc property
           Object.entries(staticGalleryImages).forEach(([key, image]) => {
             imagesData.push({
               placeholderImageSrc: NGPHOTO_LOGO_MARK_BW,
               ...image
-            })
-          })
-          setStaticGalleryImages(imagesData.reverse())
-          setStaticGallerySideNav(sideNavData.sort((a, b) => a.weight - b.weight))
+            });
+          });
+          setStaticGalleryImages(imagesData.reverse());
+          setStaticGallerySideNav(sideNavData.sort((a, b) => a.weight - b.weight));
         }
-      })
+      });
     }
     
-    getHomePageImages()
-    getStaticGallery()
+    getHomePageImages();
+    getStaticGallery();
 
-    return () => dbRef.off()
-  }, [])
+    return () => dbRef.off();
+  }, []);
 
   return (
     <div className='page home-page'>
@@ -127,7 +128,7 @@ const HomePage = () => {
       <ButtonRow { ...data.buttonRow } />
       <StaticGallery { ...staticGalleryData } images={ staticGalleryImages } sideNavMenuItems={ staticGallerySideNav } />
     </div>
-  )
+  );
 }
 
-export default HomePage
+export default HomePage;

@@ -1,0 +1,12 @@
+@import './variables.scss';
+@import 'loriss';
+@import './mixins.scss';
+@import './library.scss';
+
+* {
+  font-size: $font-size-base;
+}
+
+html {
+  scroll-behavior: smooth;
+}
