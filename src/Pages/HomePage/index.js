@@ -8,7 +8,6 @@ import {
   ButtonRow,
   HeroGallery,
   Quote,
-  RichText,
   StaticGallery,
   TextSection
 } from '../../library';
@@ -103,27 +102,25 @@ const HomePage = () => {
       <HeroGallery images={ images } />
       <TextSection { ...data.textSection }>
         <Quote {...data.quote} />
-        <RichText>
-          <p>
-            Neil has been taking photographs for over 40 years, switching from film to 
-            digital in 2009. In 2017, he took early retirement from a career in the IT 
-            industry in order to focus on his image making. Neil’s photography follows two 
-            distinct paths. Firstly, he has a very keen interest in the natural world and 
-            spends a lot of time outside searching for wildlife or scenery that can be 
-            photographed. In these images, Neil avoids use of Photoshop or other image 
-            alterations: he looks for ways to capture atmosphere and mood rather than simply 
-            recording the scene, but does not set up photographs or use post-processing 
-            software to add or remove things. All image are post-processed in Lightroom, 
-            but this does not make changes to the underlying image in Neil’s nature photography. 
-            Neil’s other passion is for more abstract photography and here he makes use of his 
-            camera’s multiple exposure facility and other creative techniques such as Intentional 
-            Camera Movement (ICM) and he also uses Photoshop to blend images to create the effect 
-            he has envisaged. You can find Neil on <a href="https://www.facebook.com/NeilGeorgePhotography/">Facebook 
-            (@NeilGeorgePhotography)</a> and <a href="https://twitter.com/NeilG199">Twitter (@NeilG199)</a>, 
-            although the Twitter feed also includes Neil’s other main interest: books. Please browse 
-            through Neil’s image galleries: he hopes you enjoy the pictures.
-          </p>
-        </RichText>
+        <p>
+          Neil has been taking photographs for over 40 years, switching from film to 
+          digital in 2009. In 2017, he took early retirement from a career in the IT 
+          industry in order to focus on his image making. Neil’s photography follows two 
+          distinct paths. Firstly, he has a very keen interest in the natural world and 
+          spends a lot of time outside searching for wildlife or scenery that can be 
+          photographed. In these images, Neil avoids use of Photoshop or other image 
+          alterations: he looks for ways to capture atmosphere and mood rather than simply 
+          recording the scene, but does not set up photographs or use post-processing 
+          software to add or remove things. All image are post-processed in Lightroom, 
+          but this does not make changes to the underlying image in Neil’s nature photography. 
+          Neil’s other passion is for more abstract photography and here he makes use of his 
+          camera’s multiple exposure facility and other creative techniques such as Intentional 
+          Camera Movement (ICM) and he also uses Photoshop to blend images to create the effect 
+          he has envisaged. You can find Neil on <a href="https://www.facebook.com/NeilGeorgePhotography/">Facebook 
+          (@NeilGeorgePhotography)</a> and <a href="https://twitter.com/NeilG199">Twitter (@NeilG199)</a>, 
+          although the Twitter feed also includes Neil’s other main interest: books. Please browse 
+          through Neil’s image galleries: he hopes you enjoy the pictures.
+        </p>
       </TextSection>
       <ButtonRow { ...data.buttonRow } />
       <StaticGallery { ...staticGalleryData } images={ staticGalleryImages } sideNavMenuItems={ staticGallerySideNav } />
