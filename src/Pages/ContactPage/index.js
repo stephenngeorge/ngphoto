@@ -10,6 +10,8 @@ import {
   TextSection,
 } from '../../library';
 
+import { ContactForm } from '../../components';
+
 import {
   CLOCK_ICON,
   MAPPIN_ICON
@@ -52,6 +54,9 @@ const ContactPage = () => {
           </p>
         </RichText>
       </TextSection>
+
+      <ContactForm />
+
       <IconsList additionalClasses={['text-container--very-narrow']} { ...data.iconsList } />
       <CardBlock { ...data.cardBlock }>
         {
