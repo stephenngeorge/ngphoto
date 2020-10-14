@@ -50,7 +50,7 @@ const ContactPage = () => {
             at £30/hour for groups of 3 or fewer and £50/hour for groups of more than 3 (this is the total 
             cost, not the cost per individual). You can also find Neil at any of the events listed below 
             (click on the post code to open Google maps and get directions to the location). <span className="color--main"><strong>Contact Neil by 
-            clicking on one of the icons below:</strong></span>
+            filling in the form or clicking on one of the icons below:</strong></span>
           </p>
         </RichText>
       </TextSection>

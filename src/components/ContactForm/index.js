@@ -65,7 +65,7 @@ const ContactForm = () => {
   }
 
   return (
-    <form className="form--contact-form" onSubmit={handleSubmit}>
+    <form className="form--contact-form text-container--very-narrow" onSubmit={handleSubmit}>
       {
         modalMessage.length > 0 &&
         <Modal
