@@ -1,0 +1,86 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400,700&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Roboto+Slab:300,400,700&display=swap');
+
+.form--contact-form {
+  margin-bottom: 3rem;
+  max-width: 1248px;
+
+  &__form-field {
+    position: relative;
+    margin-bottom: 1rem;
+
+    input, textarea {
+      width: 100%;
+      font-size: 1rem;
+      font-family: 'Open Sans', sans-serif;
+      padding: 1.2rem .5rem .2rem;
+      border-radius: .125rem;
+      border: .125rem solid #000;
+
+      + label {
+        font-size: 1rem;
+        font-family: 'Open Sans', sans-serif;
+        font-weight: 700;
+
+        position: absolute;
+        z-index: 1;
+        left: .5rem;
+        top: 50%;
+        transform: translateY(-50%);
+
+        transition: top .2s ease, transform .2s ease;
+        transform-origin: left;
+      }
+
+      &:focus {
+        outline-color: #B88A9F;
+      }
+    }
+
+    input:not([value=""]),
+    textarea:not([data-message=""]) {
+      outline-color: #C4DBD1;
+      border: .125rem solid #C4DBD1;
+    }
+
+    input:focus + label,
+    textarea:focus + label,
+    input:not([value=""]) + label,
+    textarea:not([data-message=""]) + label {
+      transform: translateY(-50%) scale(.8);
+      top: 22%;
+    }
+    textarea:not([data-message=""]) + label {
+      top: 6%;
+    }
+
+    textarea {
+      padding-top: 1.5rem;
+      + label {
+        top: 8%;
+      }
+      &:focus + label {
+        top: 6%;
+      }
+    }
+  }
+
+  input[type="submit"] {
+    padding: 1rem;
+    font-family: 'Roboto Slab', serif;
+    font-weight: 700;
+    background-color: #C4DBD1;
+    border: .125rem solid #000;
+    border-radius: .125rem;
+    cursor: pointer;
+
+    transition: background-color .2 ease;
+    &:hover {
+      background-color: lighten(#C4DBD1, 5%);
+    }
+
+    &:disabled {
+      background-color: #E0DFDE;
+    }
+  }
+}

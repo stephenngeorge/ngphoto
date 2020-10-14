@@ -2,6 +2,7 @@ import emailjs from 'emailjs-com';
 import React, { useEffect, useState } from 'react';
 
 import Modal from '../Modal';
+// import '../_forms.scss';
 
 const ContactForm = () => {
   const [modalMessage, setModalMessage] = useState('');
@@ -77,7 +78,6 @@ const ContactForm = () => {
       }
 
       <div className="form--contact-form__form-field">
-        <label htmlFor="name">Your name:</label>
         <input
           name="name"
           id="name"
@@ -85,10 +85,10 @@ const ContactForm = () => {
           onChange={e => setName(e.target.value)}
           required={true}
         />
+        <label htmlFor="name">Your name:</label>
       </div>
 
       <div className="form--contact-form__form-field">
-        <label htmlFor="email">Your email address:</label>
         <input
           name="email"
           id="email"
@@ -96,17 +96,20 @@ const ContactForm = () => {
           onChange={e => setEmailAddress(e.target.value)}
           required={true}
         />
+        <label htmlFor="email">Your email address:</label>
       </div>
 
       <div className="form--contact-form__form-field">
-        <label htmlFor="message">Your message:</label>
         <textarea
           name="message"
           id="message"
           value={message}
+          data-message={message}
+          rows={7}
           onChange={e => setMessage(e.target.value)}
           required={true}
         ></textarea>
+        <label htmlFor="message">Your message:</label>
       </div>
       
       {

@@ -55,9 +55,10 @@ const ContactPage = () => {
         </RichText>
       </TextSection>
 
+      <IconsList additionalClasses={['text-container--very-narrow']} { ...data.iconsList } />
+
       <ContactForm />
 
-      <IconsList additionalClasses={['text-container--very-narrow']} { ...data.iconsList } />
       <CardBlock { ...data.cardBlock }>
         {
           cardsData.length > 0 &&
