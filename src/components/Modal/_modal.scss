@@ -1,3 +1,45 @@
 .modal {
+  position: fixed;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 1rem 2rem;
+  border: 2px solid #000;
+  border-radius: .125rem;
+  z-index: 1;
 
+  box-shadow: 0 .25rem .5rem .25rem rgba(0, 0, 0, .24);
+
+  h4 {
+    margin-bottom: .5rem;
+  }
+
+  &--success { background-color: #C4DBD1; }
+  &--error { background-color: #CDADBB; }
+  &--info { background-color: #E0DFDE; }
+
+  button {
+    position: absolute;
+    top: 1rem;
+    right: 2rem;
+    width: 1.5rem;
+    height: 1.5rem;
+    background: none;
+    border: none;
+    transform: rotate(45deg);
+    cursor: pointer;
+
+    .modal__close-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      height: 20%;
+      width: 100%;
+      background-color: #000;
+
+      &--v {
+        transform: translateY(-50%) rotate(90deg);
+      }
+    }
+  }
 }

@@ -1,26 +1,32 @@
 import emailjs from 'emailjs-com';
 import React, { useEffect, useState } from 'react';
 
+import Modal from '../Modal';
+
 const ContactForm = () => {
+  const [modalMessage, setModalMessage] = useState('');
+  const [modalStatus, setModalStatus] = useState('info');
+  const [modalTitle, setModalTitle] = useState('');
+
   const [loading, setLoading] = useState(false);
   const [validForm, setValidForm] = useState(false);
   const [name, setName] = useState('');
   const [emailAddress, setEmailAddress] = useState('');
   const [message, setMessage] = useState('');
 
-  const validateForm = () => {
-    if (
-      name.length > 0 &&
-      emailAddress.length > 0 &&
-      message.length > 0
-    ) {
-      setValidForm(true);
-    } else {
-      setValidForm(false);
-    }
-  }
-
+  
   useEffect(() => {
+    const validateForm = () => {
+      if (
+        name.length > 0 &&
+        emailAddress.length > 0 &&
+        message.length > 0
+      ) {
+        setValidForm(true);
+      } else {
+        setValidForm(false);
+      }
+    }
     validateForm();
   }, [name, emailAddress, message]);
 
@@ -28,6 +34,12 @@ const ContactForm = () => {
     setName('');
     setEmailAddress('');
     setMessage('');
+  }
+  
+  const closeModal = () => {
+    setModalTitle('');
+    setModalMessage('');
+    setModalStatus(null);
   }
 
   const handleSubmit = e => {
@@ -37,18 +49,33 @@ const ContactForm = () => {
     emailjs.sendForm('ng_photography', 'template_sq5g11f', e.target, 'user_rzaXBokHim2lKG3uVtjrm')
       .then(result => {
         setLoading(false);
+        setModalMessage('Your message has been sent! Neil will get back to you soon.');
+        setModalStatus('success');
+        setModalTitle('Thanks for getting in touch,');
+        resetForm();
         console.log(result);
       })
       .catch(err => {
         setLoading(false);
+        setModalMessage('Sorry, we couldn\'t send your message. Please try again, or contact Neil with one of the social icons below.' )
+        setModalTitle('Oh no!');
+        setModalStatus('error');
         console.log(err);
       });
-
-    resetForm();
   }
 
   return (
     <form className="form--contact-form" onSubmit={handleSubmit}>
+      {
+        modalMessage.length > 0 &&
+        <Modal
+          handleClose={closeModal}
+          message={modalMessage}
+          status={modalStatus}
+          title={modalTitle}
+        />
+      }
+
       <div className="form--contact-form__form-field">
         <label htmlFor="name">Your name:</label>
         <input
