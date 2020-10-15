@@ -9,7 +9,7 @@ import {
   ContactPage,
   GalleriesPage,
   HomePage,
-  Page404
+  Page404,
 } from './Pages';
 
 const App = () => {
