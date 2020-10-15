@@ -13,7 +13,7 @@ import { Themer } from './library';
 dotenv.config()
 // firebase setup
 const config = {
-  apiKey: process.env.APIKEY,
+  apiKey: process.env.REACT_APP_APIKEY,
   authDomain: "ng-photography.firebaseapp.com",
   databaseURL: "https://ng-photography.firebaseio.com",
   projectId: "ng-photography",
