@@ -1,7 +1,7 @@
+// import dotenv from 'dotenv';
+// dotenv.config();
 import "object-fit-polyfill";
 import "intersection-observer";
-import dotenv from 'dotenv';
-dotenv.config();
 
 import React from 'react';
 import { render } from 'react-dom';
@@ -14,7 +14,7 @@ import { Themer } from './library';
 
 // firebase setup
 const config = {
-  apiKey: process.env.APIKEY,
+  apiKey: process.env.REACT_APP_APIKEY,
   authDomain: "ng-photography.firebaseapp.com",
   databaseURL: "https://ng-photography.firebaseio.com",
   projectId: "ng-photography",

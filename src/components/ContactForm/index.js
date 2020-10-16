@@ -47,7 +47,7 @@ const ContactForm = () => {
     e.preventDefault();
     setLoading(true);
 
-    emailjs.sendForm('ng_photography', 'template_sq5g11f', e.target, 'user_rzaXBokHim2lKG3uVtjrm')
+    emailjs.sendForm('ng_photography', process.env.REACT_APP_EMAIL_TEMPLATE, e.target, process.env.REACT_APP_EMAIL_USERID)
       .then(result => {
         setLoading(false);
         setModalMessage('Your message has been sent! Neil will get back to you soon.');
