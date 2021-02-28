@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { useFirebaseDb } from '../../utils';
 
@@ -20,6 +20,7 @@ import {
 import data from './data';
 
 const ContactPage = () => {
+  const anchorRef = useRef(null);
   const [cardsData, setCardsData] = useState([]);
   const [eventsVal, dbRef] = useFirebaseDb("Events");
 
@@ -36,9 +37,14 @@ const ContactPage = () => {
     }
   }, [eventsVal, dbRef]);
 
+  const scrollToAnchor = () => {
+    window.scrollTo(0, window.scrollY + (anchorRef.current.getBoundingClientRect().top) - 64);
+  }
+
   return (
     <div className="page site-page contact-page">
       <TextSection { ...data.textSection }>
+        <button id="scroll-to-anchor" onClick={scrollToAnchor}>Upcoming events are further down this page.</button>
         <RichText>
           <p>
             Contact Neil if you are interested in <Link to="/buy">buying a photo</Link>, or if you 
@@ -59,6 +65,7 @@ const ContactPage = () => {
 
       <ContactForm />
 
+      <span ref={anchorRef}></span>
       <CardBlock { ...data.cardBlock }>
         {
           cardsData.length > 0 &&

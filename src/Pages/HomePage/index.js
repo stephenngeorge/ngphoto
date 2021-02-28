@@ -16,7 +16,6 @@ import data from './data';
 import { NGPHOTO_LOGO_MARK_BW } from '../../assets';
 
 const HomePage = () => {
-  const [images, setImages] = useState([]);
   const [staticGalleryImages, setStaticGalleryImages] = useState([]);
   const [staticGallerySideNav, setStaticGallerySideNav] = useState([]);
   const staticGalleryData = {
@@ -33,24 +32,6 @@ const HomePage = () => {
     // imageSrc and imagePlaceholderSrc (which is the same for every image)
     const db = firebase.database();
     const dbRef = db.ref("Photos");
-    // fetches images for the hero gallery component
-    const getHomePageImages = () => {
-      const homepageImages = [];
-      dbRef.on('value', snapshot => {
-        if (snapshot !== null) {
-          const imageData = snapshot.val().Home_Page.images;
-          // pass all values of image along with the additional
-          // image placeholder property
-          Object.entries(imageData).forEach(([key, image]) => {
-            homepageImages.push({
-              imagePlaceholderSrc: NGPHOTO_LOGO_MARK_BW,
-              ...image
-            });
-          });
-          setImages(homepageImages);
-        }
-      });
-    }
     // fetches images and sidenav data for the
     // static gallery component
     const getStaticGallery = () => {
@@ -91,7 +72,6 @@ const HomePage = () => {
       });
     }
     
-    getHomePageImages();
     getStaticGallery();
 
     return () => dbRef.off();
@@ -99,7 +79,7 @@ const HomePage = () => {
 
   return (
     <div className='page home-page'>
-      <HeroGallery images={ images } />
+      <HeroGallery images={ data.gallery } />
       <TextSection { ...data.textSection }>
         <Quote {...data.quote} />
         <p>

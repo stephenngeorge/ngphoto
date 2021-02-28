@@ -1,4 +1,4 @@
-@import './library/index.scss';
+@import "./library/index.scss";
 
 .buy-page--text,
 .contact-page--text {
@@ -24,7 +24,7 @@
     margin-right: 1rem;
     background: none;
     border: none;
-    border-radius: .25rem;
+    border-radius: 0.25rem;
     background-color: $color--light;
     text-transform: uppercase;
     text-decoration: underline;
@@ -44,7 +44,7 @@
       outline: none;
     }
 
-    transition: color .2s ease-out, background .2s ease-out;
+    transition: color 0.2s ease-out, background 0.2s ease-out;
   }
 
   button.active {
@@ -92,11 +92,11 @@
 
 .event-card {
   .more-details {
-    margin-top: .5rem;
+    margin-top: 0.5rem;
     font-family: $font-family-serif;
     font-size: $font-size-lead;
     color: $color--main;
-    transition: color .2s ease;
+    transition: color 0.2s ease;
     &:hover {
       color: darken($color--main, 10%);
     }
@@ -115,16 +115,16 @@
 .event__postcode {
   display: flex;
   align-items: center;
-  margin-bottom: .5rem;
+  margin-bottom: 0.5rem;
   font-weight: $font-weight-heavy;
   img {
     width: 1.5rem;
     height: auto;
-    margin-right: .5rem;
+    margin-right: 0.5rem;
   }
   a {
     color: $color--secondary;
-    transition: color .2 ease;
+    transition: color 0.2 ease;
     &:hover {
       color: darken($color--secondary, 10%);
     }
@@ -165,6 +165,25 @@
   }
 }
 
-blockquote, .quote {
+blockquote,
+.quote {
   overflow: hidden;
+}
+
+button#scroll-to-anchor {
+  padding: 0;
+  margin: 0;
+  margin-bottom: 1rem;
+  text-align: left;
+  background: none;
+  border: none;
+  color: $color--main;
+  font-family: $font-family-serif;
+  font-size: $font-size-lead;
+  text-decoration: underline;
+
+  &:focus {
+    outline: none;
+    background-color: rgba($color--main, 0.1);
+  }
 }

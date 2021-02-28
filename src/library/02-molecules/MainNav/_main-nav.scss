@@ -3,13 +3,13 @@ $menu-height--tall: 5rem;
 $menu-height--short: 3.5rem;
 $menu-item--padding: 1.5rem;
 
-$menu-shadow: 0 .25rem .375rem 0 rgba(0, 0, 0, .4);
+$menu-shadow: 0 0.25rem 0.375rem 0 rgba(0, 0, 0, 0.4);
 
 // generic menu styles
 .main-nav {
   display: flex;
   justify-content: space-between;
-  padding: 0 .5rem;
+  padding: 0 0.5rem;
   @include breakpoint("md") {
     padding: 0 1.5rem;
   }
@@ -24,7 +24,7 @@ $menu-shadow: 0 .25rem .375rem 0 rgba(0, 0, 0, .4);
   height: $menu-height--short;
   z-index: $zindex-foreground;
 
-  transition: height .1s ease-out;
+  transition: height 0.1s ease-out;
   &--wide {
     .site-title,
     .main-nav__menu a {
@@ -48,7 +48,7 @@ $menu-shadow: 0 .25rem .375rem 0 rgba(0, 0, 0, .4);
     .site-logo {
       height: 2rem;
       margin-right: 1rem;
-      transition: transform .4s cubic-bezier(.17, .67, .75, 1.36);
+      transition: transform 0.4s cubic-bezier(0.17, 0.67, 0.75, 1.36);
     }
     &:hover .site-logo {
       transform: rotate(135deg);
@@ -102,10 +102,10 @@ $menu-shadow: 0 .25rem .375rem 0 rgba(0, 0, 0, .4);
       position: absolute;
       left: 50%;
       width: 50%;
-      height: .25rem;
+      height: 0.25rem;
       background-color: $color--light;
       transform: translate(-50%, -50%);
-      transition: width .2s ease;
+      transition: width 0.2s ease;
     }
     // styles specific to each bar of the menu icon
     &--top {
@@ -129,7 +129,7 @@ $menu-shadow: 0 .25rem .375rem 0 rgba(0, 0, 0, .4);
     top: $menu-height--short;
     width: 100%;
     z-index: -10;
-    transition: height .2s ease-out, left .4s ease-out;
+    transition: height 0.2s ease-out, left 0.4s ease-out;
     @include breakpoint("lg") {
       position: relative;
       flex-direction: row;
@@ -143,15 +143,16 @@ $menu-shadow: 0 .25rem .375rem 0 rgba(0, 0, 0, .4);
       color: inherit;
       font-size: 1rem;
       font-weight: $font-weight-heavy;
+      flex-shrink: 0;
 
       display: flex;
       justify-content: center;
       align-items: center;
       padding: 2rem $menu-item--padding;
-      transition: background-color .2s ease, color .2s ease;
+      transition: background-color 0.2s ease, color 0.2s ease;
       @include breakpoint("lg") {
         padding: 0 $menu-item--padding;
-        font-size: .8rem;
+        font-size: 0.8rem;
       }
       text-transform: uppercase;
     }
@@ -217,7 +218,7 @@ $menu-shadow: 0 .25rem .375rem 0 rgba(0, 0, 0, .4);
     width: 100vw;
     height: 100%;
     transform: translateX(-50%);
-    background-color: rgba($color--dark, .4);
+    background-color: rgba($color--dark, 0.4);
     z-index: -1;
   }
 
@@ -239,7 +240,7 @@ $menu-shadow: 0 .25rem .375rem 0 rgba(0, 0, 0, .4);
 
     a:hover {
       color: $color--secondary;
-      background-color: rgba($color--dark, .2)
+      background-color: rgba($color--dark, 0.2);
     }
   }
 }

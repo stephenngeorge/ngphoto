@@ -26,7 +26,7 @@ const RichText = ({
       })
     }
 
-    const options = { threshold: .5 }
+    const options = { threshold: .25 }
     const observer = new IntersectionObserver(animateText, options)
     const textBlocks = Array.from(document.querySelectorAll('.rich-text'))
     if (textBlocks.length > 0) textBlocks.forEach(block => observer.observe(block))
