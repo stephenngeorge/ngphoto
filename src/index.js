@@ -1,6 +1,6 @@
-// import dotenv from 'dotenv';
-// dotenv.config();
 import "object-fit-polyfill";
+import "core-js/stable";
+import "cross-fetch/polyfill";
 import "intersection-observer";
 
 import React from 'react';
